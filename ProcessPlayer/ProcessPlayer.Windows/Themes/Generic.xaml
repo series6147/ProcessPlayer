@@ -1,0 +1,38 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:con="clr-namespace:ProcessPlayer.Windows.Converters"
+    xmlns:local="clr-namespace:ProcessPlayer.Windows.Controls"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <con:LoggingEventToBackgroundConverter x:Key="LoggingEventToBackgroundConverter" />
+    <con:LoggingEventToForegroundConverter x:Key="LoggingEventToForegroundConverter" />
+
+    <!--Style LogListView-->
+    <Style TargetType="{x:Type local:LogListView}">
+        <Setter Property="BorderThickness"  Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:LogListView}">
+                    <ListBox x:Name="PART_ListBox" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" FontSize="18" HorizontalAlignment="Stretch" ItemsSource="{Binding ItemsSource, RelativeSource={RelativeSource Mode=TemplatedParent}}" VerticalAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Padding="2">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="5" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Foreground="DarkCyan" Text="{Binding TimeStamp, StringFormat='dd.MM.yyyy hh:mm:ss.fff'}" VerticalAlignment="Top" />
+                                        <TextBlock Background="{Binding Converter={StaticResource LoggingEventToBackgroundConverter}}" Foreground="{Binding Converter={StaticResource LoggingEventToForegroundConverter}}" Grid.Column="2" Text="{Binding RenderedMessage}" TextWrapping="Wrap" VerticalAlignment="Top" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
