@@ -50,19 +50,27 @@ globals['number2']=0;"
 		}
 	},
 	{
-		Blank: {
+		Decision: {
 		ID: "number",
+		OnExecuteStarted: "var values = this.getInput()['console.selector'];
+if (values != null && values.Length)
+{
+	globals['number1']=values[0].Data;
+	globals['operator2']=globals['operator1'];
+	log(toString(globals['number2']) + ' ' + globals['operator2']);
+}",
 		OutgoingIDs: ["console.selector"]
 		}
 	},
 	{
-		Blank: {
+		Decision: {
 		ID: "operator",
 		OnExecuteStarted: "var values = this.getInput()['console.selector'];
 if (values != null && values.Length)
 {
-	globals['operator2']=globals['operator1'];
+	globals['number2']=globals['number1'];
 	globals['operator1']=values[0].Data;
+	log(toString(globals['number2']) + ' ' + globals['operator2']);
 }",
 		OutgoingIDs: ["console.selector"]
 		}

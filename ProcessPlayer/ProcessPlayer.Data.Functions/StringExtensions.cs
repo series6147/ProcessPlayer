@@ -249,6 +249,16 @@ namespace ProcessPlayer.Data.Functions
         }
 
         /// <summary>
+        /// TOSTRINGs the specified value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        public static string toString(object value)
+        {
+            return value.ToString();
+        }
+
+        /// <summary>
         /// TRIMs the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
