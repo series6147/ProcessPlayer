@@ -3,6 +3,11 @@
 	{
 		Blank: {
 		ID: "start",
+		OnExecuteStarted: "//initialization
+globals['operator1']='';
+globals['operator2']='';
+globals['number1']=0;
+globals['number2']=0;"
 		OutgoingIDs: ["console.selector"]
 		}
 	},
@@ -16,7 +21,7 @@
 	if (isNumeric(text))
 	{
 		this.setInput({ 'console.selector': [value(text)] });
-		return ['console.selector','number'];
+		return ['number'];
 	}
 	else
 	{
@@ -29,12 +34,12 @@
 		case '+':
 		{
 			this.setInput({ 'console.selector': [text] });
-			return ['console.selector','operator'];
+			return ['operator'];
 		}
 			break;
 		case 'c':
 		case 'C':
-			return ['console.selector','reset'];
+			return ['reset'];
 			break;
 		}
 	}
@@ -46,17 +51,31 @@
 	},
 	{
 		Blank: {
-		ID: "number"
+		ID: "number",
+		OutgoingIDs: ["console.selector"]
 		}
 	},
 	{
 		Blank: {
-		ID: "operator"
+		ID: "operator",
+		OnExecuteStarted: "var values = this.getInput()['console.selector'];
+if (values != null && values.Length)
+{
+	globals['operator2']=globals['operator1'];
+	globals['operator1']=values[0].Data;
+}",
+		OutgoingIDs: ["console.selector"]
 		}
 	},
 	{
 		Blank: {
-		ID: "reset"
+		ID: "reset",
+		OnExecuteStarted: "//reset
+globals['operator1']='';
+globals['operator2']='';
+globals['number1']=0;
+globals['number2']=0;"
+		OutgoingIDs: ["console.selector"]
 		}
 	},
 	{
