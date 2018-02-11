@@ -9,6 +9,12 @@ namespace ProcessPlayer.Data.CodeGen.Generators
 {
     public class JScriptGen : CodeGen
     {
+        #region constants
+
+        private const string UV = "DE8958F1-9933-4091-87BB-0305D31C4492";
+
+        #endregion
+
         #region private variables
 
         private int _fIndex;
@@ -260,7 +266,7 @@ from ProcessPlayer.Data.Functions.MathExtensions import *
 from ProcessPlayer.Data.Functions.StringExtensions import *
 
 {0}
-def {1}:", "{DE8958F1-9933-4091-87BB-0305D31C4492}", string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vartuple)" : _functionDeclaration))
+def {1}:", UV, string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vartuple)" : _functionDeclaration))
          .AppendLine();
 
             foreach (var n in GetNodeChildren(node))
@@ -272,7 +278,7 @@ def {1}:", "{DE8958F1-9933-4091-87BB-0305D31C4492}", string.IsNullOrEmpty(_funct
                         .Append(n.GetAsString(_expression));
             }
 
-            sb.Replace("{DE8958F1-9933-4091-87BB-0305D31C4492}", _sbFun.ToString());
+            sb.Replace(UV, _sbFun.ToString());
         }
 
         protected virtual void MultiplicativeExpression(PegNode node, StringBuilder sb, int spaceCount)
@@ -383,6 +389,8 @@ def {1}:", "{DE8958F1-9933-4091-87BB-0305D31C4492}", string.IsNullOrEmpty(_funct
                 .Append(GetNodeString(node.child))
                 .AppendLine(")");
 
+            var indexDefault = -1;
+
             foreach (var c in GetNodeChildren(node).Where(n => n.id == (int)EJScriptParser.Case || n.id == (int)EJScriptParser.Default).OrderBy(n => n.id))
             {
                 switch (c.id)
@@ -390,30 +398,42 @@ def {1}:", "{DE8958F1-9933-4091-87BB-0305D31C4492}", string.IsNullOrEmpty(_funct
                     case (int)EJScriptParser.Case:
                         _sbFun.AppendFormat("def f{0}(arg):", ++_fIndex)
                             .AppendLine()
-                            .Append(" if (arg == ")
-                            .Append(GetNodeString(c.child))
-                            .AppendLine("):");
+                            .AppendFormat(" if (arg == {0} or arg == '{1}'):", GetNodeString(c.child), UV)
+                            .AppendLine();
                         break;
                     case (int)EJScriptParser.Default:
-                        _sbFun.AppendFormat("def f{0}(arg):", ++_fIndex)
+                        _sbFun.AppendFormat("def f{0}(arg):", indexDefault = ++_fIndex)
                             .AppendLine();
                         break;
                 }
 
                 if (GetNodeChildren(c).Skip(1).Any())
+                {
+                    var breakExists = false;
+
                     foreach (var n in GetNodeChildren(c).Skip(1))
                     {
                         DefaultNodeGen(n, _sbFun, 2, false);
 
                         if (n.next != null && n.next.id == (int)EJScriptParser.Break)
                         {
+                            breakExists = true;
+
                             TruncateOrTerminateLine(_sbFun);
 
                             _sbFun.Append("  return");
                         }
                     }
+
+                    if (!breakExists)
+                    {
+                        TruncateOrTerminateLine(_sbFun);
+
+                        _sbFun.AppendFormat("  arg='{0}'", UV);
+                    }
+                }
                 else
-                    _sbFun.AppendLine("  pass");
+                    _sbFun.AppendFormat("  arg='{0}'", UV);
 
                 TruncateOrTerminateLine(_sbFun);
 
@@ -421,9 +441,12 @@ def {1}:", "{DE8958F1-9933-4091-87BB-0305D31C4492}", string.IsNullOrEmpty(_funct
                     .AppendLine();
             }
 
-            _sbFun.AppendFormat("def f{0}(arg):", ++_fIndex)
-                .AppendLine()
-                .AppendLine(" return None");
+            if (_fIndex != indexDefault)
+            {
+                _sbFun.AppendFormat("def f{0}(arg):", ++_fIndex)
+                    .AppendLine()
+                    .AppendFormat(" return{0}", indexDefault == -1 ? "" : string.Format(" f{0}(arg)", indexDefault));
+            }
         }
 
         protected virtual void TernaryOperator(PegNode node, StringBuilder sb, int spaceCount)

@@ -15,7 +15,7 @@
 	var text = Console.ReadLine();
 	if (isNumeric(text))
 	{
-		this.setOutputBuffer([value(text)]);
+		this.setInput({ 'console.selector': [value(text)] });
 		return ['console.selector','number'];
 	}
 	else
@@ -28,7 +28,7 @@
 		case '-':
 		case '+':
 		{
-			this.setOutputBuffer([text]);
+			this.setInput({ 'console.selector': [text] });
 			return ['console.selector','operator'];
 		}
 			break;
