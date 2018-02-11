@@ -17,7 +17,7 @@ namespace ProcessPlayer.Data.CodeGen.Generators
 
         #region private variables
 
-        private int _fIndex;
+        private int _funIndex;
         private readonly StringBuilder _sbFun = new StringBuilder();
         private string _functionDeclaration;
 
@@ -68,12 +68,8 @@ namespace ProcessPlayer.Data.CodeGen.Generators
         {
             var name = node.child.GetAsString(_expression);
 
-            if (spaceCount > 0)
-            {
-                sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar));
-            }
-
-            sb.Append(name)
+            sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar))
+            .Append(name)
                 .Append('(');
 
             foreach (var child in GetNodeChildren(node).Skip(1))
@@ -178,9 +174,9 @@ namespace ProcessPlayer.Data.CodeGen.Generators
 
         protected virtual void Function(PegNode node, StringBuilder sb, int spaceCount)
         {
-            sb.AppendFormat("f{0}", ++_fIndex);
+            sb.AppendFormat("f{0}", ++_funIndex);
 
-            _sbFun.AppendFormat("def f{0}({1}):", _fIndex, string.Join(",", GetNodeChildren(node).Where(n => n.id == (int)EJScriptParser.identifier).Select(n => GetNodeString(n))))
+            _sbFun.AppendFormat("def f{0}({1}):", _funIndex, string.Join(",", GetNodeChildren(node).Where(n => n.id == (int)EJScriptParser.identifier).Select(n => GetNodeString(n))))
                 .AppendLine();
 
             var block = GetNodeChildren(node).FirstOrDefault(n => n.id == (int)EJScriptParser.block);
@@ -266,7 +262,7 @@ from ProcessPlayer.Data.Functions.MathExtensions import *
 from ProcessPlayer.Data.Functions.StringExtensions import *
 
 {0}
-def {1}:", UV, string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vartuple)" : _functionDeclaration))
+def {1}:", "BCE7C272-2EEE-4EAB-8F6E-043BBBBD7454", string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vartuple)" : _functionDeclaration))
          .AppendLine();
 
             foreach (var n in GetNodeChildren(node))
@@ -278,7 +274,7 @@ def {1}:", UV, string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vart
                         .Append(n.GetAsString(_expression));
             }
 
-            sb.Replace(UV, _sbFun.ToString());
+            sb.Replace("BCE7C272-2EEE-4EAB-8F6E-043BBBBD7454", _sbFun.ToString());
         }
 
         protected virtual void MultiplicativeExpression(PegNode node, StringBuilder sb, int spaceCount)
@@ -331,12 +327,9 @@ def {1}:", UV, string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vart
 
         protected virtual void PostfixCall(PegNode node, StringBuilder sb, int spaceCount)
         {
-            if (spaceCount > 0)
-            {
-                TruncateOrTerminateLine(sb);
+            TruncateOrTerminateLine(sb);
 
-                sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar));
-            }
+            sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar));
 
             DefaultNodeGen(node, sb, 0, false);
         }
@@ -385,69 +378,56 @@ def {1}:", UV, string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vart
             TruncateOrTerminateLine(sb);
 
             sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar))
-                .AppendFormat("f{0}(", _fIndex + 1)
-                .Append(GetNodeString(node.child))
-                .Append(", this, vars, globals, params")
-                .AppendLine(")");
-
-            var indexDefault = -1;
+                .AppendLine("try:")
+                .Append(string.Empty.PadRight(IndentSize * (spaceCount + 1), IndentChar))
+                .AppendLine(string.Format("__swarg__={0}", GetNodeString(node.child)));
 
             foreach (var c in GetNodeChildren(node).Where(n => n.id == (int)EJScriptParser.Case || n.id == (int)EJScriptParser.Default).OrderBy(n => n.id))
             {
-                switch (c.id)
+                var indent = 1;
+
+                TruncateOrTerminateLine(sb);
+
+                if (c.id == (int)EJScriptParser.Case)
                 {
-                    case (int)EJScriptParser.Case:
-                        _sbFun.AppendFormat("def f{0}(arg, this, vars, globals, params):", ++_fIndex)
-                            .AppendLine()
-                            .AppendFormat(" if (arg == {0} or arg == '{1}'):", GetNodeString(c.child), UV)
-                            .AppendLine();
-                        break;
-                    case (int)EJScriptParser.Default:
-                        _sbFun.AppendFormat("def f{0}(arg, this, vars, globals, params):", indexDefault = ++_fIndex)
-                            .AppendLine();
-                        break;
+                    indent = 2;
+
+                    sb.Append(string.Empty.PadRight(IndentSize * (spaceCount + 1), IndentChar))
+                        .AppendFormat("if (__swarg__ == {0} or __swarg__ == '{1}'):", GetNodeString(c.child), UV)
+                        .AppendLine();
                 }
 
                 if (GetNodeChildren(c).Skip(1).Any())
                 {
-                    var breakExists = false;
+                    sb.Append(string.Empty.PadRight(IndentSize * (spaceCount + indent), IndentChar))
+                        .AppendFormat("__swarg__='{0}'", UV)
+                        .AppendLine();
 
                     foreach (var n in GetNodeChildren(c).Skip(1))
                     {
-                        DefaultNodeGen(n, _sbFun, 2, false);
+                        DefaultNodeGen(n, sb, spaceCount + indent, false);
 
                         if (n.next != null && n.next.id == (int)EJScriptParser.Break)
                         {
-                            breakExists = true;
+                            TruncateOrTerminateLine(sb);
 
-                            TruncateOrTerminateLine(_sbFun);
-
-                            _sbFun.Append("  return");
+                            sb.Append(string.Empty.PadRight(IndentSize * (spaceCount + indent), IndentChar))
+                                .AppendLine("raise");
                         }
-                    }
-
-                    if (!breakExists)
-                    {
-                        TruncateOrTerminateLine(_sbFun);
-
-                        _sbFun.AppendFormat("  arg='{0}'", UV);
                     }
                 }
                 else
-                    _sbFun.AppendFormat("  arg='{0}'", UV);
-
-                TruncateOrTerminateLine(_sbFun);
-
-                _sbFun.AppendFormat(" return f{0}(arg, this, vars, globals, params)", _fIndex + 1)
-                    .AppendLine();
+                    sb.Append(string.Empty.PadRight(IndentSize * (spaceCount + indent), IndentChar))
+                        .AppendFormat("__swarg__='{0}'", UV)
+                        .AppendLine();
             }
 
-            if (_fIndex != indexDefault)
-            {
-                _sbFun.AppendFormat("def f{0}(arg, this, vars, globals, params):", ++_fIndex)
-                    .AppendLine()
-                    .AppendFormat(" return{0}", indexDefault == -1 ? "" : string.Format(" f{0}(arg, this, vars, globals, params)", indexDefault));
-            }
+            TruncateOrTerminateLine(sb);
+
+            sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar))
+                .AppendLine("except:")
+                .Append(string.Empty.PadRight(IndentSize * (spaceCount + 1), IndentChar))
+                .Append("pass");
         }
 
         protected virtual void TernaryOperator(PegNode node, StringBuilder sb, int spaceCount)
@@ -480,10 +460,7 @@ def {1}:", UV, string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vart
         {
             TruncateOrTerminateLine(sb);
 
-            if (spaceCount > 0)
-            {
-                sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar));
-            }
+            sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar));
 
             foreach (var v in GetNodeChildren(node))
                 DefaultNodeGen(v, sb, 0, false);
