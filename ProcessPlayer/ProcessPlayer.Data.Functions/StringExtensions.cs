@@ -255,7 +255,7 @@ namespace ProcessPlayer.Data.Functions
         /// <returns></returns>
         public static string toString(object value)
         {
-            return value.ToString();
+            return value == null ? "" : value.ToString();
         }
 
         /// <summary>
