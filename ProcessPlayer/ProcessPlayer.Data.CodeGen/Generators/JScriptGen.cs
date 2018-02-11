@@ -387,6 +387,7 @@ def {1}:", UV, string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vart
             sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar))
                 .AppendFormat("f{0}(", _fIndex + 1)
                 .Append(GetNodeString(node.child))
+                .Append(", this, vars, globals, params")
                 .AppendLine(")");
 
             var indexDefault = -1;
@@ -396,13 +397,13 @@ def {1}:", UV, string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vart
                 switch (c.id)
                 {
                     case (int)EJScriptParser.Case:
-                        _sbFun.AppendFormat("def f{0}(arg):", ++_fIndex)
+                        _sbFun.AppendFormat("def f{0}(arg, this, vars, globals, params):", ++_fIndex)
                             .AppendLine()
                             .AppendFormat(" if (arg == {0} or arg == '{1}'):", GetNodeString(c.child), UV)
                             .AppendLine();
                         break;
                     case (int)EJScriptParser.Default:
-                        _sbFun.AppendFormat("def f{0}(arg):", indexDefault = ++_fIndex)
+                        _sbFun.AppendFormat("def f{0}(arg, this, vars, globals, params):", indexDefault = ++_fIndex)
                             .AppendLine();
                         break;
                 }
@@ -437,15 +438,15 @@ def {1}:", UV, string.IsNullOrEmpty(_functionDeclaration) ? "Perform(arg1, *vart
 
                 TruncateOrTerminateLine(_sbFun);
 
-                _sbFun.AppendFormat(" return f{0}(arg)", _fIndex + 1)
+                _sbFun.AppendFormat(" return f{0}(arg, this, vars, globals, params)", _fIndex + 1)
                     .AppendLine();
             }
 
             if (_fIndex != indexDefault)
             {
-                _sbFun.AppendFormat("def f{0}(arg):", ++_fIndex)
+                _sbFun.AppendFormat("def f{0}(arg, this, vars, globals, params):", ++_fIndex)
                     .AppendLine()
-                    .AppendFormat(" return{0}", indexDefault == -1 ? "" : string.Format(" f{0}(arg)", indexDefault));
+                    .AppendFormat(" return{0}", indexDefault == -1 ? "" : string.Format(" f{0}(arg, this, vars, globals, params)", indexDefault));
             }
         }
 
