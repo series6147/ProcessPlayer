@@ -7,7 +7,7 @@
 globals['operator1']='';
 globals['operator2']='';
 globals['number1']=0;
-globals['number2']=0;"
+globals['number2']=0;",
 		OutgoingIDs: ["console.selector"]
 		}
 	},
@@ -51,27 +51,29 @@ globals['number2']=0;"
 	},
 	{
 		Decision: {
-		ID: "number",
-		OnExecuteStarted: "var values = this.getInput()['console.selector'];
+		Condition: "var values = this.getInput()['console.selector'];
 if (values != null && values.Length)
 {
 	globals['number1']=values[0].Data;
 	globals['operator2']=globals['operator1'];
-	log(toString(globals['number2']) + ' ' + globals['operator2']);
+	this.msg(toString(globals['number2']) + ' ' + globals['operator2']);
+	return ['console.selector'];
 }",
+		ID: "number",
 		OutgoingIDs: ["console.selector"]
 		}
 	},
 	{
 		Decision: {
-		ID: "operator",
-		OnExecuteStarted: "var values = this.getInput()['console.selector'];
+		Condition: "var values = this.getInput()['console.selector'];
 if (values != null && values.Length)
 {
 	globals['number2']=globals['number1'];
 	globals['operator1']=values[0].Data;
-	log(toString(globals['number2']) + ' ' + globals['operator2']);
+	this.msg(toString(globals['number2']) + ' ' + globals['operator2']);
+	return ['console.selector'];
 }",
+		ID: "operator",
 		OutgoingIDs: ["console.selector"]
 		}
 	},
@@ -82,7 +84,7 @@ if (values != null && values.Length)
 globals['operator1']='';
 globals['operator2']='';
 globals['number1']=0;
-globals['number2']=0;"
+globals['number2']=0;",
 		OutgoingIDs: ["console.selector"]
 		}
 	},

@@ -138,6 +138,11 @@ namespace ProcessPlayer.Content
             Root.Log.Debug(string.Format("{0}:{1}", ID, string.Format(message, args)));
         }
 
+        public void msg(string message)
+        {
+            Root.Log.Debug(message);
+        }
+
         public void resetInput()
         {
             IncomingDataBuffer.Clear();
