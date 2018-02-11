@@ -6,8 +6,8 @@
 		OnExecuteStarted: "//initialization
 globals['operator1']='';
 globals['operator2']='';
-globals['number1']=0;
-globals['number2']=0;",
+globals['number1']=null;
+globals['number2']=null;",
 		OutgoingIDs: ["console.selector"]
 		}
 	},
@@ -57,7 +57,14 @@ if (values != null && values.Length)
 	globals['number1']=values[0].Data;
 	globals['operator2']=globals['operator1'];
 	this.msg(toString(globals['number2']) + ' ' + globals['operator2']);
-	return ['console.selector'];
+	if (globals['number2'] != null && globals['operator2'] != '')
+	{
+		return ['calculator'];
+	}
+	else
+	{
+		return ['console.selector'];
+	}
 }",
 		ID: "number",
 		OutgoingIDs: ["console.selector"]
@@ -70,11 +77,48 @@ if (values != null && values.Length)
 {
 	globals['number2']=globals['number1'];
 	globals['operator1']=values[0].Data;
-	this.msg(toString(globals['number2']) + ' ' + globals['operator2']);
-	return ['console.selector'];
+	this.msg(toString(globals['number2']) + ' ' + globals['operator1']);
+	if (globals['number2'] != null && globals['operator2'] != '')
+	{
+		return ['calculator'];
+	}
+	else
+	{
+		return ['console.selector'];
+	}
 }",
 		ID: "operator",
 		OutgoingIDs: ["console.selector"]
+		}
+	},
+	{
+		Blank: {
+		ID: "calculator",
+		OnExecuteStarted: "switch (globals['operator2'])
+{
+	case '/':
+	{
+		globals['number1']=globals['number2']/globals['number1'];
+	}
+		break;
+	case '*':
+	{
+		globals['number1']=globals['number2']*globals['number1'];
+	}
+		break;
+	case '-':
+	{
+		globals['number1']=globals['number2']-globals['number1'];
+	}
+		break;
+	case '+':
+	{
+		globals['number1']=globals['number2']+globals['number1'];
+	}
+		break;
+}
+this.msg('= ' + globals['number1']);
+"
 		}
 	},
 	{
@@ -83,8 +127,8 @@ if (values != null && values.Length)
 		OnExecuteStarted: "//reset
 globals['operator1']='';
 globals['operator2']='';
-globals['number1']=0;
-globals['number2']=0;",
+globals['number1']=null;
+globals['number2']=null;",
 		OutgoingIDs: ["console.selector"]
 		}
 	},
