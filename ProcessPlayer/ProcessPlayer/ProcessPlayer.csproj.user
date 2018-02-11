@@ -16,4 +16,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <StartArguments>"D:\ID-Mark\ID-Mark.ini.json" "D:\ID-Mark\DomeTest.json"</StartArguments>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <StartWorkingDirectory>
+    </StartWorkingDirectory>
+    <StartArguments>"C:\Users\ieltanskyin\Documents\Visual Studio 2017\Projects\ProcessPlayer\Samples\calculator.json"</StartArguments>
+  </PropertyGroup>
 </Project>

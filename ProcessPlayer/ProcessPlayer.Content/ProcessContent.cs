@@ -123,7 +123,7 @@ namespace ProcessPlayer.Content
                 select c;
         }
 
-        public ObservableDictionary<string, DataExchangeObject[]> getInputData()
+        public ObservableDictionary<string, DataExchangeObject[]> getInput()
         {
             return IncomingDataBuffer;
         }
@@ -138,9 +138,19 @@ namespace ProcessPlayer.Content
             Root.Log.Debug(string.Format("{0}:{1}", ID, string.Format(message, args)));
         }
 
-        public void resetInputData()
+        public void resetInput()
         {
             IncomingDataBuffer.Clear();
+        }
+
+        public void setInput(IDictionary<string, IEnumerable<object>> input)
+        {
+            IncomingDataBuffer.Clear();
+
+            foreach (var kvp in input)
+            {
+                IncomingDataBuffer.Add(kvp.Key, kvp.Value.Select(v => new DataExchangeObject() { Data = v }).ToArray());
+            }
         }
 
         #endregion
@@ -253,10 +263,7 @@ namespace ProcessPlayer.Content
                     foreach (var r in OutgoingLinks)
                         r.IncomingDataBuffer.Remove(ID);
 
-                    lock (IncomingDataBuffer.SyncContext)
-                    {
-                        res = GetInputAsArray();
-                    }
+                    res = GetInputAsArray();
 
                     if (res != null)
                         foreach (var r in OutgoingLinks)

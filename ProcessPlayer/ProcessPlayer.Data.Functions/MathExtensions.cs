@@ -170,6 +170,13 @@ namespace ProcessPlayer.Data.Functions
             return gcd;
         }
 
+        public static bool isNumeric(string value)
+        {
+            double d;
+
+            return double.TryParse(value, out d);
+        }
+
         public static int lcm(params int[] numbers)
         {
             for (int i = 1; ; i++)

@@ -18,7 +18,7 @@ namespace ProcessPlayer
                     {
                         Console.WriteLine(string.Format("{0} - started", args[i]));
 
-                        sp.PrepareAndDiagnostics(reader.ReadToEnd(), 120000).Wait();
+                        sp.PrepareAndDiagnostics(reader.ReadToEnd(), args[i], 120000).Wait();
 
                         if (sp.IsPrepared)
                             sp.Play().Wait();

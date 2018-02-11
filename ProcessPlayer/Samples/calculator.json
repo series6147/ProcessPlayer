@@ -1,0 +1,68 @@
+{
+	Children: [
+	{
+		Blank: {
+		ID: "start",
+		OutgoingIDs: ["console.selector"]
+		}
+	},
+	{
+		Decision: {
+		ID: "console.selector",
+		Condition: "if (this.IsConsole)
+{
+	Console.WriteLine('enter number or operator.');
+	var text = Console.ReadLine();
+	if (isNumeric(text))
+	{
+		this.setOutputBuffer([value(text)]);
+		return ['console.selector','number'];
+	}
+	else
+	{
+		switch (text)
+		{
+		case '':
+		case '/':
+		case '*':
+		case '-':
+		case '+':
+		{
+			this.setOutputBuffer([text]);
+			return ['console.selector','operator'];
+		}
+			break;
+		case 'c':
+		case 'C':
+			return ['console.selector','reset'];
+			break;
+		}
+	}
+	return ['console.selector'];
+}",
+		OutgoingIDs: ["console.selector","end","number","operator","reset"],
+		TriggerMode: 1
+		}
+	},
+	{
+		Blank: {
+		ID: "number"
+		}
+	},
+	{
+		Blank: {
+		ID: "operator"
+		}
+	},
+	{
+		Blank: {
+		ID: "reset"
+		}
+	},
+	{
+		Blank: {
+		ID: "end"
+		}
+	}
+	]
+}

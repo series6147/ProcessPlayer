@@ -20,9 +20,6 @@ namespace ProcessPlayer.Data.CodeGen.Generators
 
         protected void DefaultNodeGen(PegNode node, StringBuilder sb, int spaceCount, bool brackets)
         {
-            if (sb.Length > 0 && (char.Equals(sb[sb.Length - 1], '\n') || char.Equals(sb[sb.Length - 1], '\r')))
-                sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar));
-
             if (brackets)
                 sb.Append('(');
 
