@@ -441,6 +441,21 @@ def {1}:", "BCE7C272-2EEE-4EAB-8F6E-043BBBBD7454", string.IsNullOrEmpty(_functio
                 .Append("))");
         }
 
+        protected virtual void TernaryOperatorExpression1(PegNode node, StringBuilder sb, int spaceCount)
+        {
+            DefaultNodeGen(node, sb, 0, false);
+        }
+
+        protected virtual void TernaryOperatorExpression2(PegNode node, StringBuilder sb, int spaceCount)
+        {
+            DefaultNodeGen(node, sb, 0, false);
+        }
+
+        protected virtual void TernaryOperatorTest(PegNode node, StringBuilder sb, int spaceCount)
+        {
+            DefaultNodeGen(node, sb, 0, false);
+        }
+
         protected virtual void This(PegNode node, StringBuilder sb, int spaceCount)
         {
             sb.Append("this");
@@ -575,6 +590,9 @@ def {1}:", "BCE7C272-2EEE-4EAB-8F6E-043BBBBD7454", string.IsNullOrEmpty(_functio
             { (int)EJScriptParser.String, String },
             { (int)EJScriptParser.Switch, Switch },
             { (int)EJScriptParser.ternaryOperator, TernaryOperator },
+            { (int)EJScriptParser.ternaryOperatorExpression1, TernaryOperatorExpression1 },
+            { (int)EJScriptParser.ternaryOperatorExpression2, TernaryOperatorExpression2 },
+            { (int)EJScriptParser.ternaryOperatorTest, TernaryOperatorTest },
             { (int)EJScriptParser.This, This },
             { (int)EJScriptParser.thisProperty, ThisProperty },
             { (int)EJScriptParser.undefined, Undefined },
