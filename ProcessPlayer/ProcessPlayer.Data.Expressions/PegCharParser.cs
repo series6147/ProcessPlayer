@@ -431,6 +431,19 @@ namespace ProcessPlayer.Data.Expressions
             return false;
         }
 
+        public static IEnumerable<PegNode> GetAncestors(PegNode pegNode)
+        {
+            var parent = pegNode.parent;
+
+            if (parent != null)
+            {
+                yield return parent;
+
+                foreach (var p in GetAncestors(parent))
+                    yield return p;
+            }
+        }
+
         public static PegNode GetChildById(PegNode pegNode, int id)
         {
             PegNode child = pegNode.child;

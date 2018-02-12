@@ -61,7 +61,10 @@ namespace ProcessPlayer.Data.CodeGen.Generators
             TruncateOrTerminateLine(sb);
 
             sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar))
-                .AppendLine(node.parent.id == (int)EJScriptParser.Case ? "return" : "break");
+                .AppendLine(PegCharParser.GetAncestors(node)
+                    .Where(n => n.id == (int)EJScriptParser.Case || n.id == (int)EJScriptParser.forIn || n.id == (int)EJScriptParser.While)
+                    .Select(n => n.id)
+                    .FirstOrDefault() == (int)EJScriptParser.Case ? "raise" : "break");
         }
 
         protected virtual void Call(PegNode node, StringBuilder sb, int spaceCount)
