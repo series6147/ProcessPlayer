@@ -4,8 +4,8 @@
 		Blank: {
 		ID: "start",
 		OnExecuteStarted: "//initialization
-globals['operand']=0;
-globals['operator']='';
+globals['operand']=null;
+globals['operator']=null;
 globals['result']=null;",
 		OutgoingIDs: ["console.selector"]
 		}
@@ -73,7 +73,7 @@ return ['console.selector'];",
 	},
 	{
 		Decision: {
-		Condition: "var values = this.getOutput();
+		Condition: "var values = globals['result'] == null ? this.getOutput() : this.getInput()['console.selector'];
 if (values != null && values.Length)
 {
 	globals['operator']=values[0].Data;
@@ -90,7 +90,12 @@ return ['console.selector'];",
 	{
 		Blank: {
 		ID: "calculator",
-		OnExecuteStarted: "switch (globals['operator'])
+		OnExecuteStarted: "if (globals['operand'] == null || globals['operator'] == null || globals['result'] == null)
+{
+	return;
+}
+
+switch (globals['operator'])
 {
 	case '/':
 	{
@@ -113,6 +118,9 @@ return ['console.selector'];",
 	}
 		break;
 }
+
+globals['operand'] = null;
+
 this.msg('= ' + toString(globals['result']));
 ",
 		OutgoingIDs: ["console.selector"]
@@ -122,8 +130,8 @@ this.msg('= ' + toString(globals['result']));
 		Blank: {
 		ID: "reset",
 		OnExecuteStarted: "//reset
-globals['operand']=0;
-globals['operator']='';
+globals['operand']=null;
+globals['operator']=null;
 globals['result']=null;",
 		OutgoingIDs: ["console.selector"]
 		}

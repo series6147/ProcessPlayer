@@ -483,7 +483,7 @@
                 And(() => Space()
                     && Char("return")
                     && Space()
-                    && (Array() || Expression() || Object())
+                    && Option(() => Array() || Expression() || Object())
                     && Space()
                     && (Char(';') || SyntaxError("<<';'>> expected"))));
         }
