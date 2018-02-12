@@ -4,10 +4,8 @@
 		Blank: {
 		ID: "start",
 		OnExecuteStarted: "//initialization
-globals['operator1']='';
-globals['operator2']='';
-globals['number1']=null;
-globals['number2']=null;",
+globals['operator']='';
+globals['result']=null;
 		OutgoingIDs: ["console.selector"]
 		}
 	},
@@ -54,10 +52,11 @@ globals['number2']=null;",
 		Condition: "var values = this.getInput()['console.selector'];
 if (values != null && values.Length)
 {
-	globals['number1']=values[0].Data;
-	globals['operator2']=globals['operator1'];
-	this.msg(toString(globals['number2']) + ' ' + globals['operator2']);
-	if (globals['number2'] != null && globals['operator2'] != '')
+	globals['number']=values[0].Data;
+
+	this.msg((globals['result'] == null ? toString(globals['number']) : toString(globals['result'])) + ' ' + globals['operator']);
+	
+	if (globals['operator'] != '')
 	{
 		return ['calculator'];
 	}
@@ -75,8 +74,13 @@ if (values != null && values.Length)
 		Condition: "var values = this.getInput()['console.selector'];
 if (values != null && values.Length)
 {
-	globals['number2']=globals['number1'];
-	globals['operator1']=values[0].Data;
+	globals['operator']=values[0].Data;
+
+	// debug log
+	this.msg('op1 = ' + globals['operator1']);
+	this.msg('op2 = ' + globals['operator2']);
+	this.msg('result = ' + toString(globals['result']));
+	
 	this.msg(toString(globals['number2']) + ' ' + globals['operator1']);
 	if (globals['number2'] != null && globals['operator2'] != '')
 	{
@@ -94,46 +98,45 @@ if (values != null && values.Length)
 	{
 		Blank: {
 		ID: "calculator",
-		OnExecuteStarted: "
-this.msg(globals['operator1']);
-this.msg(globals['operator2']);
-this.msg(toString(globals['number1']));
-this.msg(toString(globals['number2']));
+		OnExecuteStarted: "// debug log
+this.msg('op1 = ' + globals['operator1']);
+this.msg('op2 = ' + globals['operator2']);
+this.msg('result = ' + toString(globals['result']));
+
 switch (globals['operator2'])
 {
 	case '/':
 	{
-		globals['number1']=globals['number2']/globals['number1'];
+		globals['result']=globals['result']/globals['number1'];
 	}
 		break;
 	case '*':
 	{
-		globals['number1']=globals['number2']*globals['number1'];
+		globals['result']=globals['result']*globals['number1'];
 	}
 		break;
 	case '-':
 	{
-		globals['number1']=globals['number2']-globals['number1'];
+		globals['result']=globals['result']-globals['number1'];
 	}
 		break;
 	case '+':
 	{
-		globals['number1']=globals['number2']+globals['number1'];
+		globals['result']=globals['result']+globals['number1'];
 	}
 		break;
 }
-this.msg('= ' + toString(globals['number1']));
-"
+this.msg('= ' + toString(globals['result']));
+",
+		OutgoingIDs: ["console.selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "reset",
 		OnExecuteStarted: "//reset
-globals['operator1']='';
-globals['operator2']='';
-globals['number1']=null;
-globals['number2']=null;",
+globals['operator']='';
+globals['result']=null;
 		OutgoingIDs: ["console.selector"]
 		}
 	},
