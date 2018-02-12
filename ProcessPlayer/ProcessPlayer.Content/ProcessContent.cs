@@ -128,6 +128,11 @@ namespace ProcessPlayer.Content
             return IncomingDataBuffer;
         }
 
+        public DataExchangeObject[] getOutput()
+        {
+            return OutputBuffer;
+        }
+
         public void log(string message)
         {
             Root.Log.Debug(string.Format("{0}:{1}", ID, message));
