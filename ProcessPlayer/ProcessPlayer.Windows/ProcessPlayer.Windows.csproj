@@ -80,6 +80,7 @@
     <Compile Include="ProcessMemoryAppender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewContainer.cs" />
+    <Compile Include="ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProcessPlayer.Content\ProcessPlayer.Content.csproj">

@@ -1,6 +1,7 @@
 ﻿using Calculator.Views;
 using ProcessPlayer.Data.Common;
 using ProcessPlayer.Engine;
+using ProcessPlayer.Windows;
 using System.Collections.Generic;
 using System.Windows.Controls;
 
@@ -20,8 +21,7 @@ namespace Calculator.ViewModels
 
         private void initialize()
         {
-            _contents["Diagnostics"] = new Diagnostics();
-            _contents["Setup and Calibration"] = new SetupAndCalibration();
+            _contents["MainFrame"] = new MainFrame();
         }
 
         private void navigate(object parameter)
@@ -34,20 +34,8 @@ namespace Calculator.ViewModels
             else
                 switch (tag)
                 {
-                    case "Diagnostics":
-                        _contents[tag] = Content = new Diagnostics();
-                        break;
-                    case "Help":
-                        _contents[tag] = Content = new Help();
-                        break;
-                    case "Process":
-                        _contents[tag] = Content = new Process();
-                        break;
-                    case "Setup and Calibration":
-                        _contents[tag] = Content = new SetupAndCalibration();
-                        break;
-                    case "Task Management":
-                        _contents[tag] = Content = new TaskManagement();
+                    case "MainFrame":
+                        _contents[tag] = Content = new MainFrame();
                         break;
                 }
         }
@@ -93,7 +81,7 @@ namespace Calculator.ViewModels
         public MainFrameViewModel()
         {
             initialize();
-            navigate("Process");
+            navigate("MainFrame");
         }
 
         #endregion
