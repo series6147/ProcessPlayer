@@ -14,9 +14,6 @@ namespace Calculator
 
             if (MainWindowViewModel.Current != null)
                 await MainWindowViewModel.Current.ScriptPlayer.Root.Dispose();
-
-            if (StartupWindowViewModel.Current != null)
-                await StartupWindowViewModel.Current.ScriptPlayer.Root.Dispose();
         }
     }
 }
