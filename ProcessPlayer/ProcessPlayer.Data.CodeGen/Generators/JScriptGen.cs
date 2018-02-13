@@ -408,15 +408,10 @@ def {1}:", "BCE7C272-2EEE-4EAB-8F6E-043BBBBD7454", string.IsNullOrEmpty(_functio
 
                     foreach (var n in GetNodeChildren(c).Skip(1))
                     {
-                        DefaultNodeGen(n, sb, spaceCount + indent, false);
+                        TruncateOrTerminateLine(sb);
 
-                        if (n.next != null && n.next.id == (int)EJScriptParser.Break)
-                        {
-                            TruncateOrTerminateLine(sb);
-
-                            sb.Append(string.Empty.PadRight(IndentSize * (spaceCount + indent), IndentChar))
-                                .AppendLine("raise");
-                        }
+                        sb.Append(string.Empty.PadRight(IndentSize * (spaceCount + indent), IndentChar))
+                            .Append(GetNodeString(n));
                     }
                 }
                 else

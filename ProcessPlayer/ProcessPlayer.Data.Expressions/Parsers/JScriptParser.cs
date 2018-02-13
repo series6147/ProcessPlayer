@@ -114,15 +114,18 @@
 
         public bool Case(ref int defaultCounter)
         {
+            int count = defaultCounter;
             var res = TreeNT((int)EJScriptParser.Default, () =>
                 And(() => Space()
                     && Char("default")
                     && Space()
                     && Char(':')
                     && Space()
-                    && Option(Block)
+                    && (Option(CaseBlock))
                     && Space()
-                    && Option(Break)));
+                    && (Peek(() => Case(ref count)) || Break() || SyntaxError("<<break>> expected"))));
+
+            defaultCounter = count;
 
             if (res)
                 defaultCounter++;
@@ -135,11 +138,44 @@
                         && Space()
                         && Char(':')
                         && Space()
-                        && Option(Block)
+                        && Option(CaseBlock)
                         && Space()
-                        && Option(Break)));
+                        && (Peek(() => Case(ref count)) || Break() || SyntaxError("<<break>> expected"))));
+
+            defaultCounter = count;
 
             return res;
+        }
+
+        public bool CaseBlock()
+        {
+            return Space()
+                && (And(() => Char('{')
+                    && Space()
+                    && OptRepeat(() => AssignmentStatement()
+                        || And(() => (Call() && Space() && (Char(';') || SyntaxError("<<';'>> expected"))))
+                        || Comment()
+                        || Continue()
+                        || ForIn()
+                        || If()
+                        || And(() => (PostfixCall() && Space() && (Char(';') || SyntaxError("<<';'>> expected"))))
+                        || Return()
+                        || Switch()
+                        || Variables()
+                        || While())
+                    && Space()
+                    && (Char('}') || SyntaxError("<<'}'>> expected")))
+                    || OptRepeat(() => AssignmentStatement()
+                        || And(() => (Call() && Space() && (Char(';') || SyntaxError("<<';'>> expected"))))
+                        || Comment()
+                        || Continue()
+                        || ForIn()
+                        || If()
+                        || And(() => (PostfixCall() && Space() && (Char(';') || SyntaxError("<<';'>> expected"))))
+                        || Return()
+                        || Switch()
+                        || Variables()
+                        || While()));
         }
 
         public bool Comment()
