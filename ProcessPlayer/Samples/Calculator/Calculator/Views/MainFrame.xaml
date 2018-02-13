@@ -1,0 +1,174 @@
+﻿<UserControl
+    x:Class="Calculator.Views.MainFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Calculator.Views" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    mc:Ignorable="d"
+    d:DesignHeight="800"
+    d:DesignWidth="1200">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="190" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="62" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="95" />
+        </Grid.RowDefinitions>
+        <Border Background="#033896" />
+        <Border Background="#d5e8ee" CornerRadius="0,5,0,0" Grid.RowSpan="3" Margin="0,3,0,0" />
+        <Border Background="#033896" Grid.Column="1" Grid.RowSpan="5" />
+        <Border Background="White" Grid.ColumnSpan="2" Grid.Row="1" Opacity=".5" />
+        <Grid TextBlock.FontSize="14" TextBlock.Foreground="#033896">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="35" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="22" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="10" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="0" />
+                <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="2" />
+                <Border Background="Green" BorderBrush="LightGray" BorderThickness="1" Grid.Row="4" />
+                <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="6" />
+                <Border BorderBrush="LightGray" BorderThickness="1" Grid.Row="8" />
+            </Grid>
+            <TextBlock Grid.Column="3" Grid.Row="1" Text="{Binding CurrentTime, RelativeSource={RelativeSource AncestorType=local:MainFrame}, StringFormat='HH:mm:ss dd.MM.yyyy'}" TextWrapping="Wrap" VerticalAlignment="Center" />
+            <TextBlock Grid.Column="9" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Center" />
+            <Button Grid.Column="11" Grid.Row="1" Style="{StaticResource StatusBarButtonStyle}" VerticalAlignment="Center">
+                <Image Height="44" Source="/ID-Mark.120;component/Images/userprofilelogon_44x44.png" Width="44" />
+            </Button>
+            <Button Grid.Column="13" Grid.Row="1" Style="{StaticResource StatusBarButtonStyle}" VerticalAlignment="Center">
+                <Image Height="44" Source="/ID-Mark.120;component/Images/userprofilelogoff_44x44.png" Width="44" />
+            </Button>
+        </Grid>
+        <Border Background="#022772" ClipToBounds="True" Grid.Column="2" Grid.Row="2" Opacity=".5">
+            <Border Background="#4e6eb2" Margin="1">
+                <Border.Effect>
+                    <BlurEffect Radius="5" />
+                </Border.Effect>
+            </Border>
+        </Border>
+        <TextBlock FontSize="28" FontWeight="Bold" Foreground="#3060b4" HorizontalAlignment="Center" Text="ID-Mark 120" VerticalAlignment="Center" Grid.Column="2" />
+        <Button BorderThickness="0" Click="StopMachine_Click" Content="Stop Machine" Focusable="False" Grid.Column="1" Grid.Row="4">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Height" Value="100" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Height="{TemplateBinding Height}" Padding="20,0,20,0">
+                                    <TextBlock FontSize="20" Foreground="#ccd7ea" Text="{TemplateBinding Content}" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Border Grid.Row="2" Grid.RowSpan="3">
+            <ContentControl Content="{Binding Content}" Focusable="False" />
+        </Border>
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Grid.Resources>
+                <Style x:Key="BlueRadioButtonStyle" TargetType="RadioButton">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                    <Setter Property="Focusable" Value="False" />
+                    <Setter Property="Height" Value="100" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="RadioButton">
+                                <Grid>
+                                    <Path Data="M 0,10 10,0 10,20 Z" Fill="White" Margin="-8,40,0,0" Stroke="#033896" StrokeThickness="4" Visibility="{Binding IsChecked, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                                        <Path.Effect>
+                                            <DropShadowEffect BlurRadius="5" Color="LightGray" Direction="180" ShadowDepth="5" />
+                                        </Path.Effect>
+                                    </Path>
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{StaticResource PathStrokeMediumColor}" BorderThickness="{TemplateBinding BorderThickness}" Height="{TemplateBinding Height}" Padding="20,0,20,0">
+                                        <TextBlock FontSize="20" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource PathStrokeMediumColor}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="#ccd7ea" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="Gray" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <RadioButton Command="{Binding NavigationCommand}" CommandParameter="Process" Content="Process" Grid.Row="0" IsChecked="True" Style="{StaticResource BlueRadioButtonStyle}">
+                <RadioButton.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolConverter}">
+                        <Binding Path="ScriptPlayer.Root[calibration-attenuator].IsExecuted" Converter="{StaticResource InvertBoolConverter}" />
+                        <Binding Path="ScriptPlayer.Root[calibration-camera].IsExecuted" Converter="{StaticResource InvertBoolConverter}" />
+                        <Binding Path="ScriptPlayer.Root[calibration-dome].IsExecuted" Converter="{StaticResource InvertBoolConverter}" />
+                        <Binding Path="ScriptPlayer.Root[calibration-focus].IsExecuted" Converter="{StaticResource InvertBoolConverter}" />
+                        <Binding Path="ScriptPlayer.Root[calibration-laser].IsExecuted" Converter="{StaticResource InvertBoolConverter}" />
+                        <Binding Path="ScriptPlayer.Root[reset].IsExecuted" Converter="{StaticResource InvertBoolConverter}" />
+                    </MultiBinding>
+                </RadioButton.IsEnabled>
+            </RadioButton>
+            <RadioButton Command="{Binding NavigationCommand}" CommandParameter="Setup and Calibration" Content="Setup and Calibration" Grid.Row="1" Style="{StaticResource BlueRadioButtonStyle}">
+                <RadioButton.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolConverter}">
+                        <Binding Path="ScriptPlayer.Root[process].IsExecuted" Converter="{StaticResource InvertBoolConverter}" />
+                        <Binding Path="ScriptPlayer.Root[reset].IsExecuted" Converter="{StaticResource InvertBoolConverter}" />
+                    </MultiBinding>
+                </RadioButton.IsEnabled>
+            </RadioButton>
+            <RadioButton Command="{Binding NavigationCommand}" CommandParameter="Task Management" Content="Task Management" Grid.Row="2" Style="{StaticResource BlueRadioButtonStyle}" />
+            <RadioButton Command="{Binding NavigationCommand}" CommandParameter="Diagnostics" Content="Diagnostics" Grid.Row="3" Style="{StaticResource BlueRadioButtonStyle}" />
+            <RadioButton Command="{Binding NavigationCommand}" CommandParameter="Help" Content="Help" Grid.Row="4" Style="{StaticResource BlueRadioButtonStyle}" />
+        </Grid>
+    </Grid>
+</UserControl>

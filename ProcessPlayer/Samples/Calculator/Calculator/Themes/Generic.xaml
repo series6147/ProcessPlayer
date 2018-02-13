@@ -1,0 +1,15 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:conv="clr-namespace:Calculator.Converters"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <conv:InvertBoolConverter x:Key="InvertBoolConverter" />
+    <conv:InvertBoolToVisibilityConverter x:Key="InvertBoolToVisibilityConverter" />
+    <conv:InvertStringIsNullOrEmptyConverter x:Key="InvertStringIsNullOrEmptyConverter" />
+    <conv:InvertVisibilityConverter x:Key="InvertVisibilityConverter" />
+    <conv:MappingConverter x:Key="MappingConverter" />
+    <conv:MultiBoolConverter x:Key="MultiBoolConverter" />
+    <conv:StringIsNullOrEmptyConverter x:Key="StringIsNullOrEmptyConverter" />
+    <conv:VisibilityToBoolConverter x:Key="VisibilityToBoolConverter" />
+</ResourceDictionary>
