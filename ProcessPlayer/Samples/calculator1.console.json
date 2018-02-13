@@ -19,7 +19,7 @@ globals['result']=null;",
 	var text = Console.ReadLine();
 	if (isNumeric(text))
 	{
-		this.setInput({ 'console.selector': [value(text)] });
+		this.setInput({ 'buffer': [value(text)] });
 		return ['number'];
 	}
 	else
@@ -32,7 +32,7 @@ globals['result']=null;",
 		case '-':
 		case '+':
 		{
-			this.setInput({ 'console.selector': [text] });
+			this.setInput({ 'buffer': [text] });
 			return ['operator'];
 		}
 			break;
@@ -44,6 +44,7 @@ globals['result']=null;",
 	}
 	return ['console.selector'];
 }",
+		IgnoreCalls: ["buffer"],
 		OutgoingIDs: ["console.selector","end","number","operator","reset"],
 		TriggerMode: 1
 		}
@@ -123,7 +124,8 @@ globals['operand'] = null;
 
 this.msg('= ' + toString(globals['result']));
 ",
-		OutgoingIDs: ["console.selector"]
+		OutgoingIDs: ["console.selector"],
+		TriggerMode: 1
 		}
 	},
 	{
