@@ -2,7 +2,7 @@
 
 Samples:
 
-For every console script you have to open cmd console and enter: processplayer.exec "script path1".
+For every console script you have to open cmd console and enter: processplayer.exe "script path1".
 
 1. calculator1.console.json. Command processplayer.exe "calculator1.console.json"
 
