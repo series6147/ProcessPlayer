@@ -681,10 +681,10 @@ namespace ProcessPlayer.Content
             {
                 case NotifyCollectionChangedAction.Add:
                 case NotifyCollectionChangedAction.Replace:
-                    RaiseDataComming();
-
                     if (e.NewItems.Cast<KeyValuePair<string, DataExchangeObject[]>>().All(kvp => _ignoreCallsHash.Contains(kvp.Key)))
                         return;
+
+                    RaiseDataComming();
 
                     execute();
                     break;
