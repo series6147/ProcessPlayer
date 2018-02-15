@@ -4,9 +4,9 @@
 		Blank: {
 		ID: "start",
 		OnExecuteStarted: "//initialization
-globals['operand']=null;
-globals['operator']=null;
-globals['result']=null;",
+globals['operand'] = null;
+globals['operator'] = null;
+globals['result'] = null;",
 		OutgoingIDs: ["console.selector"]
 		}
 	},
@@ -56,11 +56,11 @@ if (values != null && values.Length)
 {
 	if (globals['result'] == null)
 	{
-		globals['result']=values[0].Data;
+		globals['result'] = values[0].Data;
 	}
 	else
 	{
-		globals['operand']=values[0].Data;
+		globals['operand'] = values[0].Data;
 	}
 
 	this.msg(toString(globals['result']) + ' ' + toString(globals['operator']) + ' ' + toString(globals['operand']));
@@ -77,7 +77,7 @@ return ['console.selector'];",
 		Condition: "var values = globals['result'] == null ? this.getOutput() : this.getInput()['console.selector'];
 if (values != null && values.Length)
 {
-	globals['operator']=values[0].Data;
+	globals['operator'] = values[0].Data;
 	
 	this.msg(toString(globals['result']) + ' ' + toString(globals['operator']) + ' ' + toString(globals['operand']));
 	
@@ -100,22 +100,22 @@ switch (globals['operator'])
 {
 	case '/':
 	{
-		globals['result']=globals['result']/globals['operand'];
+		globals['result'] = globals['result'] / globals['operand'];
 	}
 		break;
 	case '*':
 	{
-		globals['result']=globals['result']*globals['operand'];
+		globals['result'] = globals['result'] * globals['operand'];
 	}
 		break;
 	case '-':
 	{
-		globals['result']=globals['result']-globals['operand'];
+		globals['result'] = globals['result'] - globals['operand'];
 	}
 		break;
 	case '+':
 	{
-		globals['result']=globals['result']+globals['operand'];
+		globals['result'] = globals['result'] + globals['operand'];
 	}
 		break;
 }
@@ -132,9 +132,9 @@ this.msg('= ' + toString(globals['result']));
 		Blank: {
 		ID: "reset",
 		OnExecuteStarted: "//reset
-globals['operand']=null;
-globals['operator']=null;
-globals['result']=null;",
+globals['operand'] = null;
+globals['operator'] = null;
+globals['result'] = null;",
 		OutgoingIDs: ["console.selector"]
 		}
 	},
