@@ -63,7 +63,7 @@ if (values != null && values.Length)
 		globals['operand']=values[0].Data;
 	}
 
-	this.msg(toString(globals['result']) + ' ' + toString(globals['operator']));
+	this.msg(toString(globals['result']) + ' ' + toString(globals['operator']) + ' ' + toString(globals['operand']));
 	
 	return ['calculator'];
 }
@@ -79,7 +79,7 @@ if (values != null && values.Length)
 {
 	globals['operator']=values[0].Data;
 	
-	this.msg(toString(globals['result']) + ' ' + toString(globals['operator']));
+	this.msg(toString(globals['result']) + ' ' + toString(globals['operator']) + ' ' + toString(globals['operand']));
 	
 	return ['calculator'];
 }
