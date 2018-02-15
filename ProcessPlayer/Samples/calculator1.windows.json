@@ -29,7 +29,8 @@ globals['stack'] = null;",
 	{
 		Blank: {
 		ID: "1",
-		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 1;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 1;
+globals['stack'] = toString(globals['operand']);",
 		OutgoingIDs: ["selector"]
 		}
 	},
