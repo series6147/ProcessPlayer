@@ -186,6 +186,9 @@ namespace ProcessPlayer.Content
         {
             try
             {
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Globals"));
+
                 if (OnGlobalsChangedDlg != null)
                     OnGlobalsChangedDlg(this, Vars, Globals, new Dictionary<string, object>() { { "name", variableName }, { "value", Globals[variableName] } });
 

@@ -13,8 +13,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Focusable="False" FontSize="48" Text="{Binding Path=ScriptPlayer.Root.Globals[result]}" TextAlignment="Right" />
-        <TextBlock Grid.Row="1" Focusable="False" FontSize="18" Text="{Binding Path=ScriptPlayer.Root.Globals[stack]}" TextAlignment="Right" />
+        <TextBlock Grid.Row="0" Focusable="False" FontSize="48" Margin="10" Text="{Binding Path=ScriptPlayer.Root.Globals[result]}" TextAlignment="Right" />
+        <TextBlock Grid.Row="1" Focusable="False" FontSize="18" Margin="10" Text="{Binding Path=ScriptPlayer.Root.Globals[stack]}" TextAlignment="Right" />
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".25*" />
