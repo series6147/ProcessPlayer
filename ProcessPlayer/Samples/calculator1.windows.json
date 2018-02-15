@@ -7,85 +7,119 @@
 globals['operand']=null;
 globals['operator']=null;
 globals['result']=null;",
-		OutgoingIDs: ["console.selector"]
+		OutgoingIDs: ["selector"]
 		}
 	},
 	{
-		Decision: {
-		ID: "console.selector",
-		Condition: "if (this.IsConsole)
-{
-	Console.WriteLine('enter number or operator.');
-	var text = Console.ReadLine();
-	if (isNumeric(text))
-	{
-		this.setInput({ 'buffer': [value(text)] });
-		return ['number'];
-	}
-	else
-	{
-		switch (text)
-		{
-		case '':
-		case '/':
-		case '*':
-		case '-':
-		case '+':
-		{
-			this.setInput({ 'buffer': [text] });
-			return ['operator'];
-		}
-			break;
-		case 'c':
-		case 'C':
-			return ['reset'];
-			break;
-		}
-	}
-	return ['console.selector'];
-}",
-		IgnoreCalls: ["buffer"],
-		OutgoingIDs: ["console.selector","end","number","operator","reset"],
+		Selector: {
+		ID: "selector",
+		OutgoingIDs: ["selector","0","1","2","3","4","5","6","7","8","9","/","*","+","-","=","C"],
 		TriggerMode: 1
 		}
 	},
 	{
-		Decision: {
-		Condition: "var values = this.getInput()['console.selector'];
-if (values != null && values.Length)
-{
-	if (globals['result'] == null)
-	{
-		globals['result']=values[0].Data;
-	}
-	else
-	{
-		globals['operand']=values[0].Data;
-	}
-
-	this.msg(toString(globals['result']) + ' ' + toString(globals['operator']));
-	
-	return ['calculator'];
-}
-return ['console.selector'];",
-		ID: "number",
-		OutgoingIDs: ["calculator","console.selector"]
+		Blank: {
+		ID: "0",
+		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 0;",
+		OutgoingIDs: ["selector"]
 		}
 	},
 	{
-		Decision: {
-		Condition: "var values = globals['result'] == null ? this.getOutput() : this.getInput()['console.selector'];
-if (values != null && values.Length)
-{
-	globals['operator']=values[0].Data;
-	
-	this.msg(toString(globals['result']) + ' ' + toString(globals['operator']));
-	
-	return ['calculator'];
-}
-return ['console.selector'];",
-		ID: "operator",
-		OutgoingIDs: ["calculator","console.selector"]
+		Blank: {
+		ID: "1",
+		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 1;",
+		OutgoingIDs: ["selector"]
+		}
+	},
+	{
+		Blank: {
+		ID: "2",
+		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 2;",
+		OutgoingIDs: ["selector"]
+		}
+	},
+	{
+		Blank: {
+		ID: "3",
+		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 3;",
+		OutgoingIDs: ["selector"]
+		}
+	},
+	{
+		Blank: {
+		ID: "4",
+		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 4;",
+		OutgoingIDs: ["selector"]
+		}
+	},
+	{
+		Blank: {
+		ID: "5",
+		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 5;",
+		OutgoingIDs: ["selector"]
+		}
+	},
+	{
+		Blank: {
+		ID: "6",
+		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 6;",
+		OutgoingIDs: ["selector"]
+		}
+	},
+	{
+		Blank: {
+		ID: "7",
+		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 7;",
+		OutgoingIDs: ["selector"]
+		}
+	},
+	{
+		Blank: {
+		ID: "8",
+		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 8;",
+		OutgoingIDs: ["selector"]
+		}
+	},
+	{
+		Blank: {
+		ID: "9",
+		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 9;",
+		OutgoingIDs: ["selector"]
+		}
+	},
+	{
+		Blank: {
+		ID: "/",
+		OnExecuteStarted: "globals['operator'] = '/'",
+		OutgoingIDs: ["calculator"]
+		}
+	},
+	{
+		Blank: {
+		ID: "*",
+		OnExecuteStarted: "globals['operator'] = '*'",
+		OutgoingIDs: ["calculator"]
+		}
+	},
+	{
+		Blank: {
+		ID: "+",
+		OnExecuteStarted: "globals['operator'] = '+'",
+		OutgoingIDs: ["calculator"]
+		}
+	},
+	{
+		Blank: {
+		ID: "-",
+		OnExecuteStarted: "globals['operator'] = '-'",
+		OutgoingIDs: ["calculator"]
+		}
+	},
+	{
+		Blank: {
+		ID: "=",
+		OnExecuteStarted: "globals['operator'] = '='",
+		OutgoingIDs: ["calculator"]
 		}
 	},
 	{
@@ -124,18 +158,18 @@ globals['operand'] = null;
 
 this.msg('= ' + toString(globals['result']));
 ",
-		OutgoingIDs: ["console.selector"],
+		OutgoingIDs: ["selector"],
 		TriggerMode: 1
 		}
 	},
 	{
 		Blank: {
-		ID: "reset",
+		ID: "C",
 		OnExecuteStarted: "//reset
 globals['operand']=null;
 globals['operator']=null;
 globals['result']=null;",
-		OutgoingIDs: ["console.selector"]
+		OutgoingIDs: ["selector"]
 		}
 	},
 	{
