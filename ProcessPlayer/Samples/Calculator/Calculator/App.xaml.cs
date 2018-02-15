@@ -12,7 +12,9 @@ namespace Calculator
         {
             base.OnExit(e);
 
-            if (MainWindowViewModel.Current != null)
+            if (MainWindowViewModel.Current != null
+                && MainWindowViewModel.Current.ScriptPlayer != null
+                && MainWindowViewModel.Current.ScriptPlayer.Root != null)
                 await MainWindowViewModel.Current.ScriptPlayer.Root.Dispose();
         }
     }

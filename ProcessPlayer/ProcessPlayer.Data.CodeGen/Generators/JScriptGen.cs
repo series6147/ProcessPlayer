@@ -60,11 +60,13 @@ namespace ProcessPlayer.Data.CodeGen.Generators
         {
             TruncateOrTerminateLine(sb);
 
+            var ids = new HashSet<int>() { (int)EJScriptParser.Case, (int)EJScriptParser.Default };
+
             sb.Append(string.Empty.PadRight(IndentSize * spaceCount, IndentChar))
-                .AppendLine(PegCharParser.GetAncestors(node)
-                    .Where(n => n.id == (int)EJScriptParser.Case || n.id == (int)EJScriptParser.forIn || n.id == (int)EJScriptParser.While)
+                .AppendLine(ids.Contains(PegCharParser.GetAncestors(node)
+                    .Where(n => n.id == (int)EJScriptParser.Case || n.id == (int)EJScriptParser.Default || n.id == (int)EJScriptParser.forIn || n.id == (int)EJScriptParser.While)
                     .Select(n => n.id)
-                    .FirstOrDefault() == (int)EJScriptParser.Case ? "raise" : "break");
+                    .FirstOrDefault()) ? "raise" : "break");
         }
 
         protected virtual void Call(PegNode node, StringBuilder sb, int spaceCount)
@@ -406,7 +408,7 @@ def {1}:", "BCE7C272-2EEE-4EAB-8F6E-043BBBBD7454", string.IsNullOrEmpty(_functio
                         .AppendFormat("__swarg__='{0}'", UV)
                         .AppendLine();
 
-                    foreach (var n in GetNodeChildren(c).Skip(1))
+                    foreach (var n in GetNodeChildren(c).Skip(c.id == (int)EJScriptParser.Case ? 1 : 0))
                     {
                         TruncateOrTerminateLine(sb);
 

@@ -7,120 +7,120 @@
 globals['operand'] = null;
 globals['operator'] = null;
 globals['previous operator'] = null;
-globals['result'] = null;",
-globals['stack'] = null;
+globals['result'] = null;
+globals['stack'] = null;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Selector: {
 		ID: "selector",
-		OutgoingIDs: ["selector","0","1","2","3","4","5","6","7","8","9","/","*","+","-","=","C"],
+		OutgoingIDs: ["selector","0","1","2","3","4","5","6","7","8","9","/","*","+","-","=","C","end"],
 		TriggerMode: 1
 		}
 	},
 	{
 		Blank: {
 		ID: "0",
-		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 0;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 0;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "1",
-		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 1;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 1;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "2",
-		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 2;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 2;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "3",
-		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 3;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 3;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "4",
-		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 4;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 4;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "5",
-		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 5;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 5;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "6",
-		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 6;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 6;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "7",
-		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 7;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 7;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "8",
-		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 8;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 8;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "9",
-		OnExecuteStarted: "globals['operand'] = value(globals['operand']) * 10 + 9;",
+		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 9;",
 		OutgoingIDs: ["selector"]
 		}
 	},
 	{
 		Blank: {
 		ID: "/",
-		OnExecuteStarted: "globals['operator'] = '/'",
+		OnExecuteStarted: "globals['operator'] = '/';",
 		OutgoingIDs: ["calculator"]
 		}
 	},
 	{
 		Blank: {
 		ID: "*",
-		OnExecuteStarted: "globals['operator'] = '*'",
+		OnExecuteStarted: "globals['operator'] = '*';",
 		OutgoingIDs: ["calculator"]
 		}
 	},
 	{
 		Blank: {
 		ID: "+",
-		OnExecuteStarted: "globals['operator'] = '+'",
+		OnExecuteStarted: "globals['operator'] = '+';",
 		OutgoingIDs: ["calculator"]
 		}
 	},
 	{
 		Blank: {
 		ID: "-",
-		OnExecuteStarted: "globals['operator'] = '-'",
+		OnExecuteStarted: "globals['operator'] = '-';",
 		OutgoingIDs: ["calculator"]
 		}
 	},
 	{
 		Blank: {
 		ID: "=",
-		OnExecuteStarted: "globals['operator'] = '='",
+		OnExecuteStarted: "globals['operator'] = '=';",
 		OutgoingIDs: ["calculator"]
 		}
 	},
@@ -173,8 +173,8 @@ this.msg('= ' + toString(globals['result']));
 globals['operand'] = null;
 globals['operator'] = null;
 globals['previous operator'] = null;
-globals['result'] = null;",
-globals['stack'] = null;
+globals['result'] = null;
+globals['stack'] = null;",
 		OutgoingIDs: ["selector"]
 		}
 	},

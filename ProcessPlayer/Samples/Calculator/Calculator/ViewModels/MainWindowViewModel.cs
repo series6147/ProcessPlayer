@@ -27,7 +27,7 @@ namespace Calculator.ViewModels
             ScriptPlayer = ScriptPlayer.Default;
             ScriptPlayer.Log.Info("Process started.");
 
-            foreach (var arg in args.Skip(2))
+            foreach (var arg in args.Skip(1))
             {
                 using (var reader = File.OpenText(arg))
                 {
