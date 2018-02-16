@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-namespace ViewContainer.Converters
+namespace GUIContainer.Converters
 {
     public class MultiBoolConverter : IMultiValueConverter
     {

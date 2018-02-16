@@ -1,7 +1,7 @@
-﻿using ViewContainer.ViewModels;
+﻿using GUIContainer.ViewModels;
 using System.Windows;
 
-namespace ViewContainer
+namespace GUIContainer
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

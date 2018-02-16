@@ -1,0 +1,52 @@
+{
+	Children: [
+	{
+		Blank: {
+		ID: "start",
+		OutgoingIDs: ["selector"]
+		}
+	},
+	{
+		Selector: {
+		ID: "selector",
+		OutgoingIDs: ["page1","page2","page3","page4","page5"],
+		TriggerMode: 1
+		}
+	},
+	{
+		Group: {
+		ID: "page1",
+		OutgoingIDs: ["selector"],
+		Views: ["scene1"]
+		}
+	},
+	{
+		Group: {
+		ID: "page2",
+		OutgoingIDs: ["selector"],
+		Views: ["scene2"]
+		}
+	},
+	{
+		Group: {
+		ID: "page3",
+		OutgoingIDs: ["selector"],
+		Views: ["scene3"]
+		}
+	},
+	{
+		Group: {
+		ID: "page4",
+		OutgoingIDs: ["selector"],
+		Views: ["scene4"]
+		}
+	},
+	{
+		Group: {
+		ID: "page5",
+		OutgoingIDs: ["selector"],
+		Views: ["scene5"]
+		}
+	}
+	]
+}

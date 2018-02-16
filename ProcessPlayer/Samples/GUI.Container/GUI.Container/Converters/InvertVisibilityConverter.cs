@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace ViewContainer.Converters
+namespace GUIContainer.Converters
 {
     public class InvertVisibilityConverter : IValueConverter
     {

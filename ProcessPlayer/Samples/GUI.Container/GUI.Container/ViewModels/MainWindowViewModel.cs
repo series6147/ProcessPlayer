@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ViewContainer.ViewModels
+namespace GUIContainer.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {

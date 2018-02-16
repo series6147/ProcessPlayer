@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace ViewContainer.Views
+namespace GUIContainer.Views
 {
     /// <summary>
     /// Interaction logic for Process.xaml
