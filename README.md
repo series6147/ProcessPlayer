@@ -6,9 +6,7 @@ For every console script you have to open cmd console and enter: processplayer.e
 
 1. calculator1.console.json. Command: processplayer.exe "...\calculator1.console.json"
 
-<img width="1103" alt="calculator1.console" src="https://raw.githubusercontent.com/series6147/ProcessPlayer/master/ProcessPlayer/Samples/Images/calculator1.console.png">
-
-![Screenshot](ProcessPlayer/calculator1.console.png)
+<img width="1103" alt="calculator1.console" src="https://raw.githubusercontent.com/series6147/ProcessPlayer/calculator1.console.png">
 
 2. Project Calculator.sln demonstrate how to bind ProcessPlayer with user interface
 
