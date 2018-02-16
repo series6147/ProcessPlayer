@@ -16,6 +16,26 @@
 	{
 		Group: {
 		Children: [
+			{
+				ToggleSwitch: {
+				ID: "page1.1",
+				OutgoingIDs: ["page1.2"],
+				Views: ["Page1_1"]
+				}
+			},
+			{
+				ToggleSwitch: {
+				ID: "page1.2",
+				OutgoingIDs: ["page1.3"],
+				Views: ["Page1_2"]
+				}
+			}
+			{
+				ToggleSwitch: {
+				ID: "page1.3",
+				Views: ["Page1_3"]
+				}
+			}
 		],
 		ID: "page1",
 		OutgoingIDs: ["selector"],
