@@ -92,7 +92,10 @@ globals['textnumber'] = null;",
 	{
 		Any: {
 		ID: "number.text.update",
-		OnExecuteStarted: "if (globals['result'] == null)
+		OnExecuteStarted: "if (globals['operator'] == '=')
+	globals['result'] = globals['operand'];
+	
+if (globals['result'] == null)
 	globals['texthistory'] = toString(globals['operand']);
 else if (globals['operand'] != null && globals['operator'] != '=')
 {
@@ -148,7 +151,10 @@ globals['textnumber'] = toString(globals['operand']);",
 	{
 		Any: {
 		ID: "calculator",
-		OnExecuteStarted: "if (globals['operand'] != null && globals['result'] == null)
+		OnExecuteStarted: "if (vars['operator'] == '=')
+	globals['operand'] = null;
+	
+if (globals['operand'] != null && globals['result'] == null)
 {
 	globals['texthistory'] = toString(globals['operand']) + ' ' + globals['operator'];
 }
@@ -195,7 +201,12 @@ globals['operand'] = null;
 globals['operator'] = null;
 globals['result'] = null;
 globals['texthistory'] = null;
-globals['textnumber'] = null;",
+globals['textnumber'] = null;
+
+var cnt = this.getContentByID('calculator');
+
+if (cnt != null)
+	cnt.Vars['operator'] = null;",
 		OutgoingIDs: ["selector"]
 		}
 	},
