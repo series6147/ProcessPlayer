@@ -126,6 +126,15 @@
     <Compile Include="Views\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Page1.1.xaml.cs">
+      <DependentUpon>Page1.1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Page1.2.xaml.cs">
+      <DependentUpon>Page1.2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Page1.3.xaml.cs">
+      <DependentUpon>Page1.3.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
     </Compile>
@@ -157,6 +166,18 @@
     <Page Include="Views\MainFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Page1.1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Page1.2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Page1.3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Page1.xaml">
       <SubType>Designer</SubType>
