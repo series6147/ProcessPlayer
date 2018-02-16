@@ -23,79 +23,89 @@ globals['textnumber'] = null;",
 		Blank: {
 		ID: "0",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 0;",
-		OutgoingIDs: ["texthistory.update"]
+		OutgoingIDs: ["number.text.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "1",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 1;",
-		OutgoingIDs: ["texthistory.update"]
+		OutgoingIDs: ["number.text.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "2",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 2;",
-		OutgoingIDs: ["texthistory.update"]
+		OutgoingIDs: ["number.text.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "3",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 3;",
-		OutgoingIDs: ["texthistory.update"]
+		OutgoingIDs: ["number.text.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "4",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 4;",
-		OutgoingIDs: ["texthistory.update"]
+		OutgoingIDs: ["number.text.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "5",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 5;",
-		OutgoingIDs: ["texthistory.update"]
+		OutgoingIDs: ["number.text.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "6",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 6;",
-		OutgoingIDs: ["texthistory.update"]
+		OutgoingIDs: ["number.text.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "7",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 7;",
-		OutgoingIDs: ["texthistory.update"]
+		OutgoingIDs: ["number.text.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "8",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 8;",
-		OutgoingIDs: ["texthistory.update"]
+		OutgoingIDs: ["number.text.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "9",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 9;",
-		OutgoingIDs: ["texthistory.update"]
+		OutgoingIDs: ["number.text.update"]
 		}
 	},
 	{
 		Any: {
-		ID: "texthistory.update",
+		ID: "number.text.update",
 		OnExecuteStarted: "if (globals['result'] == null)
 	globals['texthistory'] = toString(globals['operand']);
-else
+else if (globals['operand'] != null && globals['operator'] != '=')
+{
 	globals['texthistory'] = toString(globals['result']) + ' ' + globals['operator'] + ' ' + toString(globals['operand']);
+}
+else if (globals['operator'] != '=')
+{
+	globals['texthistory'] = toString(globals['result']) + ' ' + globals['operator'];
+}
+else
+{
+	globals['texthistory'] = toString(globals['result']);
+}
 globals['textnumber'] = toString(globals['operand']);",
 		OutgoingIDs: ["selector"]
 		}
@@ -165,6 +175,26 @@ switch (vars['operator'])
 globals['operand'] = null;
 globals['textnumber'] = toString(globals['result']);
 vars['operator'] = globals['operator'];",
+		OutgoingIDs: ["calculator.text.update"]
+		}
+	},
+	{
+		Any: {
+		ID: "calculator.text.update",
+		OnExecuteStarted: "if (globals['result'] == null)
+	globals['texthistory'] = toString(globals['operand']);
+else if (globals['operand'] != null && globals['operator'] != '=')
+{
+	globals['texthistory'] = toString(globals['result']) + ' ' + globals['operator'] + ' ' + toString(globals['operand']);
+}
+else if (globals['operator'] != '=')
+{
+	globals['texthistory'] = toString(globals['result']) + ' ' + globals['operator'];
+}
+else
+{
+	globals['texthistory'] = toString(globals['result']);
+}",
 		OutgoingIDs: ["selector"]
 		}
 	},
