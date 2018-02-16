@@ -8,9 +8,6 @@ For every console script you have to open cmd console and enter: processplayer.e
 
 <img width="1103" alt="calculator1.console" src="https://raw.githubusercontent.com/series6147/ProcessPlayer/master/ProcessPlayer/Samples/Images/calculator1.console.png?_sm_au_=iFVk6V7Fs1qN43fs">
 
-{::nomarkdown}
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
 <html>
 <head>
 <META http-equiv=Content-Type content="text/html; charset=UTF-8">
@@ -195,8 +192,6 @@ span {
     </span><span class="sc10">]</span><span class="sc0">
 </span><span class="sc10">}</span></div></body>
 </html>
-
-{:/}
 
 2. Project Calculator.sln demonstrate how to bind ProcessPlayer with user interface
 
