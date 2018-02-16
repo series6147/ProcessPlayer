@@ -8,7 +8,7 @@ For every console script you have to open cmd console and enter: processplayer.e
 
 <img width="1103" alt="calculator1.console" src="https://raw.githubusercontent.com/series6147/ProcessPlayer/master/ProcessPlayer/Samples/Images/calculator1.console.png">
 
-![Screenshot](https://raw.githubusercontent.com/series6147/ProcessPlayer/master/ProcessPlayer/Samples/Images/calculator1.console.png)
+![Screenshot](calculator1.console.png)
 
 2. Project Calculator.sln demonstrate how to bind ProcessPlayer with user interface
 
