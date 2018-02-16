@@ -21,6 +21,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartWorkingDirectory>
     </StartWorkingDirectory>
-    <StartArguments>"C:\Users\ieltanskyin\Documents\Visual Studio 2017\Projects\ProcessPlayer\trunk\ProcessPlayer\Samples\viewContainer.windows.json"</StartArguments>
+    <StartArguments>"C:\Users\ieltanskyin\Documents\Visual Studio 2017\Projects\ProcessPlayer\trunk\ProcessPlayer\Samples\guiContainer.windows.json"</StartArguments>
   </PropertyGroup>
 </Project>
