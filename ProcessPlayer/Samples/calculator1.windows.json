@@ -8,7 +8,7 @@ globals['operand'] = null;
 globals['operator'] = null;
 globals['result'] = null;
 globals['texthistory'] = null;
-globals['textnumber'] = null;
+globals['textnumber'] = null;",
 		OutgoingIDs: ["selector"]
 		}
 	},
@@ -176,7 +176,7 @@ globals['operand'] = null;
 globals['operator'] = null;
 globals['result'] = null;
 globals['texthistory'] = null;
-globals['textnumber'] = null;
+globals['textnumber'] = null;",
 		OutgoingIDs: ["selector"]
 		}
 	},
