@@ -12,6 +12,9 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="190" />
         </Grid.ColumnDefinitions>
+        <Border>
+            <ContentControl Content="{Binding Content}" Focusable="False" />
+        </Border>
         <Border Background="#033896" Grid.Column="1" Grid.RowSpan="5" />
         <Grid Grid.Column="1" Grid.Row="3">
             <Grid.Resources>

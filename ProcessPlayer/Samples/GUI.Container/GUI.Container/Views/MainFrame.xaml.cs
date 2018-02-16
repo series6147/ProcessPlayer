@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using GUIContainer.ViewModels;
+using System.Windows.Controls;
 
 namespace GUIContainer.Views
 {
@@ -9,6 +10,7 @@ namespace GUIContainer.Views
     {
         public MainFrame()
         {
+            DataContext = new MainFrameViewModel();
             InitializeComponent();
         }
     }
