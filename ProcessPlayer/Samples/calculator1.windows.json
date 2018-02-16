@@ -6,9 +6,9 @@
 		OnExecuteStarted: "//initialization
 globals['operand'] = null;
 globals['operator'] = null;
-globals['previous operator'] = null;
 globals['result'] = null;
-globals['stack'] = null;",
+globals['texthistory'] = null;
+globals['textnumber'] = null;
 		OutgoingIDs: ["selector"]
 		}
 	},
@@ -23,69 +23,80 @@ globals['stack'] = null;",
 		Blank: {
 		ID: "0",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 0;",
-		OutgoingIDs: ["selector"]
+		OutgoingIDs: ["texthistory.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "1",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 1;",
-		OutgoingIDs: ["selector"]
+		OutgoingIDs: ["texthistory.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "2",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 2;",
-		OutgoingIDs: ["selector"]
+		OutgoingIDs: ["texthistory.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "3",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 3;",
-		OutgoingIDs: ["selector"]
+		OutgoingIDs: ["texthistory.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "4",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 4;",
-		OutgoingIDs: ["selector"]
+		OutgoingIDs: ["texthistory.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "5",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 5;",
-		OutgoingIDs: ["selector"]
+		OutgoingIDs: ["texthistory.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "6",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 6;",
-		OutgoingIDs: ["selector"]
+		OutgoingIDs: ["texthistory.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "7",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 7;",
-		OutgoingIDs: ["selector"]
+		OutgoingIDs: ["texthistory.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "8",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 8;",
-		OutgoingIDs: ["selector"]
+		OutgoingIDs: ["texthistory.update"]
 		}
 	},
 	{
 		Blank: {
 		ID: "9",
 		OnExecuteStarted: "globals['operand'] = toDouble(globals['operand']) * 10 + 9;",
+		OutgoingIDs: ["texthistory.update"]
+		}
+	},
+	{
+		Any: {
+		ID: "texthistory.update",
+		OnExecuteStarted: "if (globals['result'] == null)
+	globals['texthistory'] = toString(globals['operand']);
+else
+	globals['texthistory'] = toString(globals['result']) + ' ' + globals['operator'] + ' ' + toString(globals['operand']);
+globals['textnumber'] = toString(globals['operand']);",
 		OutgoingIDs: ["selector"]
 		}
 	},
@@ -125,45 +136,36 @@ globals['stack'] = null;",
 		}
 	},
 	{
-		Blank: {
+		Any: {
 		ID: "calculator",
 		OnExecuteStarted: "if (globals['operand'] != null && globals['result'] == null)
 {
 	globals['result'] = globals['operand'];
 	globals['operand'] = null;
-	globals['stack'] = toString(globals['result']);
+	vars['operator'] = globals['operator'];
 	return;
 }
 
-switch (globals['previous operator'])
+switch (vars['operator'])
 {
 	case '/':
 		globals['result'] = globals['result'] / globals['operand'];
-		globals['previous operator'] = globals['operator'];
 		break;
 	case '*':
 		globals['result'] = globals['result'] * globals['operand'];
-		globals['previous operator'] = globals['operator'];
 		break;
 	case '-':
 		globals['result'] = globals['result'] - globals['operand'];
-		globals['previous operator'] = globals['operator'];
 		break;
 	case '+':
 		globals['result'] = globals['result'] + globals['operand'];
-		globals['previous operator'] = globals['operator'];
-		break;
-	default:
-		globals['previous operator'] = null;
 		break;
 }
 
 globals['operand'] = null;
-
-this.msg('= ' + toString(globals['result']));
-",
-		OutgoingIDs: ["selector"],
-		TriggerMode: 1
+globals['textnumber'] = toString(globals['result']);
+vars['operator'] = globals['operator'];",
+		OutgoingIDs: ["selector"]
 		}
 	},
 	{
@@ -172,9 +174,9 @@ this.msg('= ' + toString(globals['result']));
 		OnExecuteStarted: "//reset
 globals['operand'] = null;
 globals['operator'] = null;
-globals['previous operator'] = null;
 globals['result'] = null;
-globals['stack'] = null;",
+globals['texthistory'] = null;
+globals['textnumber'] = null;
 		OutgoingIDs: ["selector"]
 		}
 	},
