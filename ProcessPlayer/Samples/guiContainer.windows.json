@@ -15,6 +15,8 @@
 	},
 	{
 		Group: {
+		Children: [
+		],
 		ID: "page1",
 		OutgoingIDs: ["selector"],
 		Views: ["scene1"]
@@ -22,6 +24,8 @@
 	},
 	{
 		Group: {
+		Children: [
+		],
 		ID: "page2",
 		OutgoingIDs: ["selector"],
 		Views: ["scene2"]
@@ -29,6 +33,8 @@
 	},
 	{
 		Group: {
+		Children: [
+		],
 		ID: "page3",
 		OutgoingIDs: ["selector"],
 		Views: ["scene3"]
@@ -36,6 +42,8 @@
 	},
 	{
 		Group: {
+		Children: [
+		],
 		ID: "page4",
 		OutgoingIDs: ["selector"],
 		Views: ["scene4"]
@@ -43,6 +51,8 @@
 	},
 	{
 		Group: {
+		Children: [
+		],
 		ID: "page5",
 		OutgoingIDs: ["selector"],
 		Views: ["scene5"]
