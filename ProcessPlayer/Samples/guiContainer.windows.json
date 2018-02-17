@@ -3,79 +3,59 @@
 	{
 		Blank: {
 		ID: "start",
-		OutgoingIDs: ["selector"]
-		}
-	},
-	{
-		Selector: {
-		ID: "selector",
-		OutgoingIDs: ["page1","page2","page3","page4","page5"],
-		TriggerMode: 1
+		OutgoingIDs: ["page1","page2","page3"]
 		}
 	},
 	{
 		Group: {
 		Children: [
 			{
-				ToggleSwitch: {
+				Blank: {
 				ID: "page1.1",
-				OutgoingIDs: ["page1.2"],
+				OutgoingIDs: ["toggle1.1"],
 				Views: ["Page1_1"]
+				}
+			}
+			{
+				ToggleSwitch: {
+				ID: "toggle1.1",
+				OutgoingIDs: ["page1.2"]
+				}
+			},
+			{
+				Blank: {
+				ID: "page1.2",
+				OutgoingIDs: ["toggle1.2"],
+				Views: ["Page1_2"]
 				}
 			},
 			{
 				ToggleSwitch: {
-				ID: "page1.2",
-				OutgoingIDs: ["page1.3"],
-				Views: ["Page1_2"]
+				ID: "toggle1.2",
+				OutgoingIDs: ["page1.3"]
 				}
-			}
+			},
 			{
-				ToggleSwitch: {
+				Blank: {
 				ID: "page1.3",
+				OutgoingIDs: ["toggle1.3"],
 				Views: ["Page1_3"]
 				}
-			}
+			},
+			{
+				ToggleSwitch: {
+				ID: "toggle1.3"
+				}
+			},
 		],
 		ID: "page1",
-		OutgoingIDs: ["selector"],
-		Views: ["scene1"]
+		OutgoingIDs: ["page1"],
+		Views: ["Page1"]
 		}
 	},
 	{
-		Group: {
-		Children: [
-		],
-		ID: "page2",
-		OutgoingIDs: ["selector"],
-		Views: ["scene2"]
-		}
-	},
-	{
-		Group: {
-		Children: [
-		],
-		ID: "page3",
-		OutgoingIDs: ["selector"],
-		Views: ["scene3"]
-		}
-	},
-	{
-		Group: {
-		Children: [
-		],
-		ID: "page4",
-		OutgoingIDs: ["selector"],
-		Views: ["scene4"]
-		}
-	},
-	{
-		Group: {
-		Children: [
-		],
-		ID: "page5",
-		OutgoingIDs: ["selector"],
-		Views: ["scene5"]
+		ToggleSwitch: {
+		ID: "end"
 		}
 	}
 	]

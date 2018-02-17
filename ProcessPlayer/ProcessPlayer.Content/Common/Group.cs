@@ -160,16 +160,18 @@ namespace ProcessPlayer.Content.Common
 
             await Task.Run((Action)(() =>
             {
-                var processes = Children.Where(r => r.OutgoingLinks == null || !r.OutgoingLinks.Any()).ToArray();
+                if (Children.Any())
+                {
+                    var processes = Children.Where(r => r.OutgoingLinks == null || !r.OutgoingLinks.Any()).ToArray();
 
-                if (!processes.Any())
-                    throw new Exception("No the ending content.");
+                    if (!processes.Any())
+                        throw new Exception("No the ending content.");
 
-                Collector.IncomingLinks = processes;
+                    Collector.IncomingLinks = processes;
 
-                foreach (var r in processes)
-                    r.OutgoingLinks = new ProcessContent[] { Collector };
-
+                    foreach (var r in processes)
+                        r.OutgoingLinks = new ProcessContent[] { Collector };
+                }
             }), token);
 
             await base.Initialize();

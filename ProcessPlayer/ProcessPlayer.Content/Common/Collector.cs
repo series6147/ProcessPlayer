@@ -23,7 +23,14 @@ namespace ProcessPlayer.Content.Common
                     Thread.Sleep(50);
                 }
 
-                return IncomingDataBuffer.Values.SelectMany(v => v).ToArray();
+                DataExchangeObject[] res;
+
+                lock (IncomingDataBuffer.SyncContext)
+                {
+                    res = IncomingDataBuffer.Values.SelectMany(v => v).ToArray();
+                }
+
+                return res;
             }, token);
         }
 

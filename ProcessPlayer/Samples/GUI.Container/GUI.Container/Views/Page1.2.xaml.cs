@@ -10,8 +10,8 @@ namespace GUIContainer.Views
     {
         public Page1_2()
         {
-            DataContext = new Page1_2ViewModel(this);
             InitializeComponent();
+            DataContext = new Page1_2ViewModel(this);
         }
     }
 }
