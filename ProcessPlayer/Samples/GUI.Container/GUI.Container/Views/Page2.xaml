@@ -4,20 +4,34 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:ppw="clr-namespace:ProcessPlayer.Windows;assembly=ProcessPlayer.Windows"
+    xmlns:views="clr-namespace:GUIContainer.Views"
     mc:Ignorable="d" 
     d:DesignHeight="300" d:DesignWidth="300">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <TextBlock FontSize="20" Grid.Column="1" Grid.Row="1" Text="Page2" />
+        <GroupBox Margin="20,0,20,0">
+            <Grid VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <RadioButton Command="{Binding Path=Container.Contents[toggle2.3].Command}" Content="Page2.1" Grid.Row="0" GroupName="g1" IsChecked="True" />
+                <RadioButton Command="{Binding Path=Container.Contents[toggle2.1].Command}" Content="Page2.2" Grid.Row="1" GroupName="g1" />
+                <RadioButton Command="{Binding Path=Container.Contents[toggle2.2].Command}" Content="Page2.3" Grid.Row="2" GroupName="g1" />
+            </Grid>
+        </GroupBox>
+        <ppw:ViewContainer Name="processViewContainer" Grid.Column="1">
+            <ppw:ViewContainer.Views>
+                <views:Page2_1 Visibility="Collapsed" />
+                <views:Page2_2 Visibility="Collapsed" />
+                <views:Page2_3 Visibility="Collapsed" />
+            </ppw:ViewContainer.Views>
+        </ppw:ViewContainer>
     </Grid>
 </UserControl>

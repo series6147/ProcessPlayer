@@ -3,7 +3,7 @@
 	{
 		Blank: {
 		ID: "start",
-		OutgoingIDs: ["page1","page2","page3"]
+		OutgoingIDs: ["page1","page2"]
 		}
 	},
 	{
@@ -50,8 +50,54 @@
 		],
 		ID: "page1",
 		OutgoingIDs: ["page1"],
-		TriggerMode: 1,
-		Views: ["Page1"]
+		TriggerMode: 1
+		}
+	},
+	{
+		Group: {
+		Children: [
+			{
+				Blank: {
+				ID: "page2.1",
+				OutgoingIDs: ["toggle2.1"],
+				Views: ["Page2_1"]
+				}
+			},
+			{
+				CommandButton: {
+				ID: "toggle2.1",
+				OutgoingIDs: ["page2.2"]
+				}
+			},
+			{
+				Blank: {
+				ID: "page2.2",
+				OutgoingIDs: ["toggle2.2"],
+				Views: ["Page2_2"]
+				}
+			},
+			{
+				CommandButton: {
+				ID: "toggle2.2",
+				OutgoingIDs: ["page2.3"]
+				}
+			},
+			{
+				Blank: {
+				ID: "page2.3",
+				OutgoingIDs: ["toggle2.3"],
+				Views: ["Page2_3"]
+				}
+			},
+			{
+				CommandButton: {
+				ID: "toggle2.3"
+				}
+			}
+		],
+		ID: "page2",
+		OutgoingIDs: ["page2"],
+		TriggerMode: 1
 		}
 	},
 	{

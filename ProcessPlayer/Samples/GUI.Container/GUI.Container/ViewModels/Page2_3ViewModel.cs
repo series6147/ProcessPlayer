@@ -1,35 +1,22 @@
-﻿using ID_Mark120.Views;
+﻿using GUIContainer.Views;
 using ProcessPlayer.Windows;
 using ProcessPlayer.Windows.Interfaces;
 using System;
-using Zeiss.Controls;
 
-namespace ID_Mark120.ViewModels
+namespace GUIContainer.ViewModels
 {
-    public class ProcessEngrDisplayViewModel : ViewModelBase, IView
+    public class Page2_3ViewModel : ViewModelBase, IView
     {
         #region private variables
 
-        private ProcessEngrDisplay _view;
+        private Page2_3 _view;
         private ViewContainer _container;
-
-        #endregion
-
-        #region private methods
-
-        private void bindLogger()
-        {
-            if (Container == null)
-                Container.Appending -= OnContainer_Appending;
-            else
-                Container.Appending += OnContainer_Appending;
-        }
 
         #endregion
 
         #region properties
 
-        public ProcessEngrDisplay View
+        public Page2_3 View
         {
             get { return _view; }
             set
@@ -47,7 +34,7 @@ namespace ID_Mark120.ViewModels
 
         #region constructors
 
-        public ProcessEngrDisplayViewModel(ProcessEngrDisplay view)
+        public Page2_3ViewModel(Page2_3 view)
         {
             if (view == null)
                 throw new ArgumentNullException("view");
@@ -74,11 +61,15 @@ namespace ID_Mark120.ViewModels
             {
                 if (_container != value)
                 {
+                    if (_container != null)
+                        _container.Appending -= OnContainer_Appending;
+
                     _container = value;
 
-                    RaisePropertyChanged("Container");
+                    if (_container != null)
+                        _container.Appending += OnContainer_Appending;
 
-                    bindLogger();
+                    RaisePropertyChanged("Container");
                 }
             }
         }

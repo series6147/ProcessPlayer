@@ -120,6 +120,10 @@
     <Compile Include="Converters\VisibilityToBoolConverter.cs" />
     <Compile Include="ViewModels\MainFrameViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\Page2ViewModel.cs" />
+    <Compile Include="ViewModels\Page2_1ViewModel.cs" />
+    <Compile Include="ViewModels\Page2_2ViewModel.cs" />
+    <Compile Include="ViewModels\Page2_3ViewModel.cs" />
     <Compile Include="ViewModels\Page3ViewModel.cs" />
     <Compile Include="ViewModels\Page1ViewModel.cs" />
     <Compile Include="ViewModels\Page1_1ViewModel.cs" />
@@ -139,6 +143,15 @@
     </Compile>
     <Compile Include="Views\Page1.3.xaml.cs">
       <DependentUpon>Page1.3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Page2.1.xaml.cs">
+      <DependentUpon>Page2.1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Page2.2.xaml.cs">
+      <DependentUpon>Page2.2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Page2.3.xaml.cs">
+      <DependentUpon>Page2.3.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Page2.xaml.cs">
       <DependentUpon>Page2.xaml</DependentUpon>
@@ -181,6 +194,18 @@
     <Page Include="Views\Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Views\Page2.1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Page2.2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Page2.3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Page2.xaml">
       <SubType>Designer</SubType>

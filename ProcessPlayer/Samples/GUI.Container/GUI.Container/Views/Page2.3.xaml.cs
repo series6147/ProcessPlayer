@@ -6,12 +6,12 @@ namespace GUIContainer.Views
     /// <summary>
     /// Interaction logic for Process.xaml
     /// </summary>
-    public partial class Page2 : UserControl
+    public partial class Page2_3 : UserControl
     {
-        public Page2()
+        public Page2_3()
         {
             InitializeComponent();
-            DataContext = new Page2ViewModel(this);
+            DataContext = new Page2_3ViewModel(this);
         }
     }
 }
