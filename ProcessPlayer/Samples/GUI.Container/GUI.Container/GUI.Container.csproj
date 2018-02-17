@@ -120,6 +120,7 @@
     <Compile Include="Converters\VisibilityToBoolConverter.cs" />
     <Compile Include="ViewModels\MainFrameViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\Page3ViewModel.cs" />
     <Compile Include="ViewModels\Page1ViewModel.cs" />
     <Compile Include="ViewModels\Page1_1ViewModel.cs" />
     <Compile Include="ViewModels\Page1_2ViewModel.cs" />

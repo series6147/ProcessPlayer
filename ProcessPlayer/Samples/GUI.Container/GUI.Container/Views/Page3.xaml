@@ -8,5 +8,6 @@
     mc:Ignorable="d" 
     d:DesignHeight="300" d:DesignWidth="300">
 
-    <ppwc:LogListView Name="logListView" />
+    <ppwc:LogListView HorizontalAlignment="Stretch" ItemsSource="{Binding LogItemsSource}" Name="logListView" VerticalAlignment="Stretch">
+    </ppwc:LogListView>
 </UserControl>
