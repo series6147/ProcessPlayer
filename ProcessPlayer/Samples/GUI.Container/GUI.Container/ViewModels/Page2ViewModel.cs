@@ -1,14 +1,16 @@
 ﻿using GUIContainer.Views;
 using ProcessPlayer.Windows;
+using ProcessPlayer.Windows.Interfaces;
 using System;
 
 namespace GUIContainer.ViewModels
 {
-    public class Page2ViewModel : ViewModelBase
+    public class Page2ViewModel : ViewModelBase, IView
     {
         #region private variables
 
         private Page2 _view;
+        private ViewContainer _container;
 
         #endregion
 
@@ -39,7 +41,26 @@ namespace GUIContainer.ViewModels
             if (view == null)
                 throw new ArgumentNullException("view");
 
+            Container = view.processViewContainer;
             View = view;
+        }
+
+        #endregion
+
+        #region IView Members
+
+        public ViewContainer Container
+        {
+            get { return _container; }
+            set
+            {
+                if (_container != value)
+                {
+                    _container = value;
+
+                    RaisePropertyChanged("Container");
+                }
+            }
         }
 
         #endregion

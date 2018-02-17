@@ -7,6 +7,7 @@
     xmlns:ppw="clr-namespace:ProcessPlayer.Windows;assembly=ProcessPlayer.Windows"
     xmlns:views="clr-namespace:GUIContainer.Views"
     mc:Ignorable="d" 
+    FontSize="20"
     d:DesignHeight="300" d:DesignWidth="300">
 
     <Grid>
@@ -14,19 +15,17 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <GroupBox Margin="20,0,20,0">
-            <Grid VerticalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <RadioButton Command="{Binding Path=Container.Contents[toggle2.3].Command}" Content="Page2.1" Grid.Row="0" GroupName="g1" IsChecked="True" />
-                <RadioButton Command="{Binding Path=Container.Contents[toggle2.1].Command}" Content="Page2.2" Grid.Row="1" GroupName="g1" />
-                <RadioButton Command="{Binding Path=Container.Contents[toggle2.2].Command}" Content="Page2.3" Grid.Row="2" GroupName="g1" />
-            </Grid>
-        </GroupBox>
-        <ppw:ViewContainer Name="processViewContainer" Grid.Column="1">
+        <Grid Margin="50,50,50,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <RadioButton Command="{Binding Container.Contents[toggle2.3].Command}" Content="Page2.1" Grid.Row="0" GroupName="g1" />
+            <RadioButton Command="{Binding Container.Contents[toggle2.1].Command}" Content="Page2.2" Grid.Row="1" GroupName="g1" />
+            <RadioButton Command="{Binding Container.Contents[toggle2.2].Command}" Content="Page2.3" Grid.Row="2" GroupName="g1" />
+        </Grid>
+        <ppw:ViewContainer x:Name="processViewContainer" HorizontalAlignment="Stretch" Grid.Column="1" VerticalAlignment="Stretch">
             <ppw:ViewContainer.Views>
                 <views:Page2_1 Visibility="Collapsed" />
                 <views:Page2_2 Visibility="Collapsed" />
