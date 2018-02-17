@@ -12,39 +12,39 @@
 			{
 				Blank: {
 				ID: "page1.1",
-				OutgoingIDs: ["toggle1_1"],
+				OutgoingIDs: ["toggle1.1"],
 				Views: ["Page1_1"]
 				}
 			},
 			{
 				CommandButton: {
-				ID: "toggle1_1",
+				ID: "toggle1.1",
 				OutgoingIDs: ["page1.2"]
 				}
 			},
 			{
 				Blank: {
 				ID: "page1.2",
-				OutgoingIDs: ["toggle1_2"],
+				OutgoingIDs: ["toggle1.2"],
 				Views: ["Page1_2"]
 				}
 			},
 			{
 				CommandButton: {
-				ID: "toggle1_2",
+				ID: "toggle1.2",
 				OutgoingIDs: ["page1.3"]
 				}
 			},
 			{
 				Blank: {
 				ID: "page1.3",
-				OutgoingIDs: ["toggle1_3"],
+				OutgoingIDs: ["toggle1.3"],
 				Views: ["Page1_3"]
 				}
 			},
 			{
 				CommandButton: {
-				ID: "toggle1_3"
+				ID: "toggle1.3"
 				}
 			}
 		],
