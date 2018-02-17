@@ -7,6 +7,20 @@
     mc:Ignorable="d" 
     d:DesignHeight="300" d:DesignWidth="300">
 
-    <Grid>
+    <Grid Background="#e8f0ff">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock FontSize="20" Grid.Column="1" Grid.Row="1" Text="Page1.3" />
+        <ToggleButton Command="{Binding Path=Container.Contents[toggle1_3].Command}" Content="NEXT" FontSize="20" Grid.Column="1" Grid.Row="3" />
     </Grid>
 </UserControl>

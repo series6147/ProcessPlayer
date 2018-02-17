@@ -62,8 +62,6 @@
             <RadioButton Command="{Binding NavigationCommand}" CommandParameter="page1" Content="Page1" Grid.Row="0" IsChecked="True" Style="{StaticResource BlueRadioButtonStyle}" />
             <RadioButton Command="{Binding NavigationCommand}" CommandParameter="page2" Content="Page2" Grid.Row="1" Style="{StaticResource BlueRadioButtonStyle}" />
             <RadioButton Command="{Binding NavigationCommand}" CommandParameter="page3" Content="Page3" Grid.Row="2" Style="{StaticResource BlueRadioButtonStyle}" />
-            <RadioButton Command="{Binding NavigationCommand}" CommandParameter="page4" Content="Page4" Grid.Row="3" Style="{StaticResource BlueRadioButtonStyle}" />
-            <RadioButton Command="{Binding NavigationCommand}" CommandParameter="page5" Content="Page5" Grid.Row="4" Style="{StaticResource BlueRadioButtonStyle}" />
         </Grid>
     </Grid>
 </UserControl>
