@@ -5,9 +5,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:ppwc="clr-namespace:ProcessPlayer.Windows.Controls;assembly=ProcessPlayer.Windows" 
-    mc:Ignorable="d" 
-    d:DesignHeight="300" d:DesignWidth="300">
+    mc:Ignorable="d">
 
-    <ppwc:LogListView HorizontalAlignment="Stretch" ItemsSource="{Binding LogItemsSource}" Name="logListView" VerticalAlignment="Stretch">
-    </ppwc:LogListView>
+    <Grid>
+        <Border Background="#34495e" />
+        <ppwc:LogListView x:Name="logListView" Background="Transparent" />
+    </Grid>
 </UserControl>

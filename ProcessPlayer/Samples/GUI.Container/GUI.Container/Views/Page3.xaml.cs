@@ -11,7 +11,7 @@ namespace GUIContainer.Views
         public Page3()
         {
             InitializeComponent();
-            DataContext = new Page3ViewModel();
+            DataContext = new Page3ViewModel(this);
         }
     }
 }
