@@ -21,6 +21,6 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBlock FontSize="20" Grid.Column="1" Grid.Row="1" Text="Page1.3" />
-        <ToggleButton Command="{Binding Path=Container.Contents[toggle1_3].Command}" Content="NEXT" FontSize="20" Grid.Column="1" Grid.Row="3" />
+        <Button Command="{Binding Path=Container.Contents[toggle1_3].Command}" Content="NEXT" FontSize="20" Grid.Column="1" Grid.Row="3" />
     </Grid>
 </UserControl>
