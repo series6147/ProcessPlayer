@@ -27,11 +27,6 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="RadioButton">
                                 <Grid>
-                                    <Path Data="M 0,10 10,0 10,20 Z" Fill="White" Margin="-8,40,0,0" Stroke="#033896" StrokeThickness="4" Visibility="{Binding IsChecked, Converter={StaticResource BoolToVisibilityConverter}, RelativeSource={RelativeSource Mode=TemplatedParent}}">
-                                        <Path.Effect>
-                                            <DropShadowEffect BlurRadius="5" Color="LightGray" Direction="180" ShadowDepth="5" />
-                                        </Path.Effect>
-                                    </Path>
                                     <Border Background="{TemplateBinding Background}" BorderBrush="{StaticResource PathStrokeMediumColor}" BorderThickness="{TemplateBinding BorderThickness}" Height="{TemplateBinding Height}" Padding="20,0,20,0">
                                         <TextBlock FontSize="20" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" VerticalAlignment="Center" TextWrapping="Wrap" />
                                     </Border>
