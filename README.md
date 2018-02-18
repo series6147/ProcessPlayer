@@ -1,6 +1,6 @@
 # ProcessPlayer
 
-Are you tired from complex and not flexible end state machine solutions? For your attention submitted intuitive very powerful end state player which can turn your software development to nice game.
+Are you tired from complex and not flexible end-state machine solutions? For your attention submitted intuitive and very powerful end-state player which can turn your software development to nice game.
 
 Samples:
 
