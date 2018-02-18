@@ -8,6 +8,8 @@ For every console script you have to open cmd console and enter: processplayer.e
 
 <img width="1103" alt="calculator1.console" src="https://raw.githubusercontent.com/series6147/ProcessPlayer-state-machine/master/ProcessPlayer/Samples/Images/calculator1.console.png?_sm_au_=iFVPpPWHtk7T66HJ">
 
+```
+
 {
 	"Children": [
 	{
@@ -155,6 +157,7 @@ globals['result'] = null;",
 	}
 	]
 }
+```
 
 2. Project Calculator.sln demonstrate how to bind ProcessPlayer with user interface
 
