@@ -388,7 +388,7 @@ if (cnt != null)
 
 **3. Project GUI.Container.sln demonstrate how to bind machine state and current GUI scene.**
 
-<img width="1234" alt="calculator1.windows" src="https://series6147.com/imgs/guiContainer.windows.png?_sm_au_=iFVLDSsZNtNjt54H">
+<img width="1234" alt="calculator1.windows" src="https://raw.githubusercontent.com/series6147/ProcessPlayer-state-machine/master/ProcessPlayer/Samples/Images/guiContainer.windows.png?_sm_au_=iFVHksQf6VRrWBn6">
 
 ```
 {
