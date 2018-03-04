@@ -144,7 +144,7 @@ this.msg('= ' + toString(globals['result']));
 	{
 		Blank: {
 		ID: "reset",
-		OnExecuteStarted: "//reset 
+		OnExecuteStarted: "//reset
 globals['operand'] = null;
 globals['operator'] = null;
 globals['result'] = null;",
