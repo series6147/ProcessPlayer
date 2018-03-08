@@ -8,8 +8,6 @@ For every console script you have to open cmd console and enter: processplayer.e
 
 **1. calculator1.console.json. Command: processplayer.exe "...\calculator1.console.json"**
 
-<img src="https://series6147.com/imgs/calculator1.console.png" alt="calculator1.console">
-
 <img width="1103" alt="calculator1.console" src="https://raw.githubusercontent.com/series6147/ProcessPlayer-state-machine/master/ProcessPlayer/Samples/Images/calculator1.console.png?_sm_au_=iFVSJH7SZZH7tKtb">
 
 ```
