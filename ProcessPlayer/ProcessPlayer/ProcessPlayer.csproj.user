@@ -19,7 +19,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <StartWorkingDirectory>
     </StartWorkingDirectory>
-    <StartArguments>
-    </StartArguments>
+    <StartArguments>"C:\Users\ieltanskyin\Documents\Visual Studio 2017\Projects\ProcessPlayer\trunk\ProcessPlayer\Samples\calculator.bankinterest.json"</StartArguments>
   </PropertyGroup>
 </Project>

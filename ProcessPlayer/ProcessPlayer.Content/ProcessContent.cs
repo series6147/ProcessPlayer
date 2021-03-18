@@ -712,7 +712,7 @@ namespace ProcessPlayer.Content
         #endregion
     }
 
-    public delegate object CommonDelegate(ProcessContent content, Variables wars, Variables globals, Dictionary<string, object> dict);
+    public delegate object CommonDelegate(ProcessContent content, Variables vars, Variables globals, Dictionary<string, object> dict);
 
     public enum TriggerMode
     {
